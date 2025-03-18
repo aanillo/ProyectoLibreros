@@ -15,4 +15,10 @@ class Writer extends Model
         'nacimiento',
         'fallecimiento'
     ];
+
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'autor_id'); 
+    }
 }

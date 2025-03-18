@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    //
     protected $fillable = [
         'titulo',
         'imagen',
@@ -17,4 +18,10 @@ class Book extends Model
         'valoracion',
         'precio'
     ];
+
+
+    public function writer()
+    {
+        return $this->belongsTo(Writer::class, 'autor_id');
+    }
 }

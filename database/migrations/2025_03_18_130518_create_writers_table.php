@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre_completo');
             $table->string('pais');
             $table->date('nacimiento');
-            $table->date('fallecimiento');
+            $table->date('fallecimiento')->nullable();
             $table->timestamps();
         });
     }
