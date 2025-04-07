@@ -15,4 +15,11 @@ class HomeController extends Controller
         return view('home', compact('randomBooks', 'randomWriters'));
     }
     
+    public function indexLog()
+{
+    $user = auth()->user();
+    $randomBooks = Book::all()->shuffle()->take(7);
+    $randomWriters = Writer::all()->shuffle()->take(4);
+    return view('homeLog', compact('user', 'randomBooks', 'randomWriters'));
+}
 }

@@ -1,7 +1,7 @@
 <header class="fixed top-0 left-0 w-full bg-[#322411] flex items-center z-50 p-4">
     
     <div class="flex justify-center mt-4 ml-[20%] mb-2"> 
-        <img src="../public/img/LogoInicial.jpg" width="120px" />
+        <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
     </div>
 
     <div class="flex flex-col ml-[8%]">
@@ -22,10 +22,10 @@
             </div>
 
             <div class="flex ml-[70%] gap-[45%]">
-                <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+                <a href="{{ route('login.show') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
                     Login
                 </a>
-                <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+                <a href="{{ route('register.show') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
                     Registro
                 </a>
             </div>
