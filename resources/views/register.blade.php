@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="flex flex-col min-h-screen text-white font-[Brawler]">
@@ -17,7 +18,7 @@
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
         <h1 class="text-center text-3xl font-semibold mb-8">Registro</h1>
 
-        <form method="POST" action="{{ route('doRegister') }}" class="register w-[650px] min-h-[500px] p-6 bg-yellow-300 border-2 border-solid border-[#322411] rounded-2xl flex flex-col justify-between items-center space-y-4">
+        <form method="POST" action="{{ route('doRegister') }}" class="register w-[650px] min-h-[500px] p-6 bg-amber-200 border-2 border-solid border-[#322411] rounded-2xl flex flex-col justify-between items-center space-y-4">
             @csrf
             <label for="nombre" class="w-full text-center">
                 <span class="block text-lg font-medium">Nombre:</span>
@@ -73,34 +74,51 @@
             </label>
             @error("localidad") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-            <label for="password" class="w-full text-center">
-                <span class="block text-lg font-medium">Contraseña:</span>
-                <div class="relative w-[80%] mx-auto">
-                    <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="password" name="password" id="password" class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-1">
-                </div>
-            </label>
-            @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
-
-            <label for="password_repeat" class="w-full text-center">
-            <span class="block text-lg font-medium">Repita su contraseña:</span>
+           
+            <label for="password" class="w-full text-center" x-data="{ show: false }">
+            <span class="block text-lg font-medium">Contraseña:</span>
             <div class="relative w-[80%] mx-auto">
                 <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                <input type="password" name="password_repeat" id="password_repeat" class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-1">
+                <input :type="show ? 'text' : 'password'" name="password" id="password" class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1">
+                <button type="button" @click="show = !show" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm">
+                <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </button>
             </div>
             </label>
             @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
+
+            <label for="password_repeat" class="w-full text-center" 
+                x-data="{ repeat: '', original: '' }" 
+                x-init="original = document.getElementById('password').value"
+            >
+            <span class="block text-lg font-medium">Repita su contraseña:</span>
+            <div class="relative w-[80%] mx-auto">
+                <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+                <input type="password" name="password_repeat" id="password_repeat"
+                    x-model="repeat"
+                    class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
+                    @input="original = document.getElementById('password').value"
+                >
+                <template x-if="repeat && repeat === original">
+                <i class="fas fa-check-circle absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500"></i>
+                </template>
+                <template x-if="repeat && repeat !== original">
+                <i class="fas fa-times-circle absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500"></i>
+                </template>
+            </div>
+            </label>
+            
             <div class="flex space-x-4 mt-4">
-                <button class="btnAceptar bg-green-500 text-white font-bold px-6 py-2 rounded-md hover:bg-green-600" type="submit" value="Registrarse">Registrarse</button>
-                <button class="btnCancelar bg-red-500 text-white font-bold px-6 py-2 rounded-md hover:bg-red-600" type="reset" value="Cancelar">Cancelar</button>
+                <button class="btnAceptar bg-green-500 font-bold text-black border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-green-600" type="submit" value="Registrarse">Registrarse</button>
+                <button class="btnCancelar bg-red-500 text-black border-2 border-solid border-black font-bold px-6 py-2 rounded-md hover:bg-red-600" type="reset" value="Cancelar">Cancelar</button>
             </div>
         </form>
 
 
         <div class="flex items-center gap-4 mt-8">
             <h3 class="text-lg">Volver a Home:</h3>
-            <a href="{{ url('/') }}" class="btnHome bg-yellow-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
         </div>
 
         <img src="{{ asset('img/libros.jpg') }}" class="w-80 h-auto my-6" alt="Libros" />

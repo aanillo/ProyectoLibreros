@@ -63,4 +63,5 @@ class User extends Authenticatable
             $user->rol = $user->rol ?? 'user';
         });
     }
+
 }

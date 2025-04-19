@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="flex flex-col min-h-screen text-white font-[Brawler]">
@@ -17,7 +18,7 @@
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
         <h1 class="text-center text-3xl font-semibold mb-8">Login</h1>
 
-        <form method="POST" action="{{ route('doLogin') }}" class="login w-[650px] min-h-[400px] p-6 bg-yellow-300 border-2 border-solid border-[#322411] rounded-2xl flex flex-col justify-between items-center space-y-2">
+        <form method="POST" action="{{ route('doLogin') }}" class="login w-[650px] min-h-[400px] p-6 bg-amber-200 border-2 border-solid border-[#322411] rounded-2xl flex flex-col justify-between items-center space-y-2">
             @csrf
 
             <label for="email" class="w-full text-center">
@@ -39,13 +40,13 @@
             @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
             <div class="flex space-x-4 mt-2">
-                <button class="btnAceptar bg-green-500 font-bold text-white px-6 py-2 rounded-md hover:bg-green-600" type="submit">Login</button>
-                <button class="btnCancelar bg-red-500 font-bold text-white px-6 py-2 rounded-md hover:bg-red-600" type="reset">Cancelar</button>
+                <button class="btnAceptar bg-green-500 font-bold text-black border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-green-600" type="submit">Login</button>
+                <button class="btnCancelar bg-red-500 font-bold text-black border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-red-600" type="reset">Cancelar</button>
             </div>
 
             <div class="flex space-x-4 mt-2">
                 <p>Si aún no estás registrado, pulsa el siguiente botón</p>
-                <a href="{{ route('register.show') }}" class="btnRegistro bg-blue-500 text-white font-bold px-6 py-2 rounded-md hover:bg-blue-600">Registrarse</a>
+                <a href="{{ route('register.show') }}" class="btnRegistro bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-600">Registrarse</a>
             </div>
         </form>
 
@@ -53,7 +54,7 @@
 
         <div class="flex items-center gap-4 mt-8">
             <h3 class="text-lg">Volver a Home:</h3>
-            <a href="{{ url('/') }}" class="btnHome bg-yellow-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
         </div>
 
         <img src="{{ asset('img/libros.jpg') }}" class="w-80 h-auto my-6" alt="Libros" />

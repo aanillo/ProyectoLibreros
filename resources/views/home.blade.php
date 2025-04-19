@@ -6,6 +6,7 @@
     <title>Libreros</title>
     <link rel="icon" type="image/x-icon" href="../public/img/LogoInicial.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="flex flex-col min-h-screen text-white font-[Brawler]">
 
@@ -47,8 +48,8 @@
             <hr class="mt-8 border-[#F5D074] w-3/4 border-2 mx-auto">
         </section>
 
-        <section class="section_frases flex gap-6 mt-6 mb-6">
-            <div class="bg-yellow-200 p-4 rounded-md flex items-center justify-center">
+        <section class="section_frases flex gap-6 mt-6 mb-12">
+            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center">
                 <h3 class="text-black text-center">
                     Un lector vive mil<br> vidas antes de morir.<br>
                     <br>
@@ -58,7 +59,7 @@
 
             <img src="../public/img/biblio.jpeg" class="w-96 h-auto" alt="Libros">
 
-            <div class="bg-yellow-200 p-4 rounded-md flex items-center justify-center">
+            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center">
                 <h3 class="text-black text-center">
                     La lectura es para la<br> mente lo que el ejercicio<br> es para el cuerpo.<br>
                     <br>

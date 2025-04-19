@@ -11,3 +11,4 @@ Route::post('/login', [UserController::class, 'doLogin'])->name('doLogin');
 Route::post('/register', [UserController::class, 'doRegister'])->name('doRegister');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/deleteUser', [UserController::class, 'deleteUser'])->name('deleteUser');
+Route::get('/logout/confirmar', [UserController::class, 'mostrarViewLogout'])->name('logout.confirm');

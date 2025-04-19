@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\User;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,7 +107,13 @@ class UserController extends Controller
 
 public function logout(){
     Auth::logout(); 
-    return view('loginform');
+    $randomBooks = Book::all()->shuffle()->take(7);
+    $randomWriters = Writer::all()->shuffle()->take(9);
+    return view('home', compact('randomBooks', 'randomWriters'));
+}
+
+public function mostrarViewLogout() {
+    return view('confirmLogout');
 }
 
 
