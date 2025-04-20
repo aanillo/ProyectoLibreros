@@ -18,12 +18,16 @@
     @include('partials.header')
 @endauth
 
-<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-64">
+<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBROS</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Realiza tu búsqueda según tipo o género</h2>
 
-        <ul class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <ul class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <li class="group bg-amber-200 p-2 shadow hover:shadow-lg transition border-2 border-solid border-[#322411] flex items-center justify-center w-[160px] 
+                hover:bg-[#322411] hover:border-amber-200">
+                <a href="{{ route('books', ['genero' => 'Todos']) }}" class="text-lg text-[#322411] text-center font-bold group-hover:text-amber-200">Todos</a>
+            </li>
             @foreach ($generos as $genero)
                 <li class="group bg-amber-200 p-2 shadow hover:shadow-lg transition border-2 border-solid border-[#322411] flex items-center justify-center w-[160px] 
                     hover:bg-[#322411] hover:border-amber-200">
@@ -60,7 +64,11 @@
             </span>
         </h2>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
+        <div x-show="allBooks.length === 0" class="text-center text-lg font-semibold text-red-500">
+            No se encontraron libros en este género.
+        </div>
+      
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="allBooks.length > 0">
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
                      class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition">

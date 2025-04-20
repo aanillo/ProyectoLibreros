@@ -48,22 +48,25 @@
             <hr class="mt-8 border-[#F5D074] w-3/4 border-2 mx-auto">
         </section>
 
-        <section class="section_frases flex gap-6 mt-6 mb-12">
-            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center">
-                <h3 class="text-black text-center">
-                    Un lector vive mil<br> vidas antes de morir.<br>
-                    <br>
-                    <i>George R. R. Martin</i>
+        <section class="section_frases flex flex-col md:flex-row gap-6 mt-6 mb-12 px-4">
+  
+            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center md:w-1/3">
+                <h3 class="text-black text-center text-lg">
+                Un lector vive mil<br> vidas antes de morir.<br><br>
+                <i>George R. R. Martin</i>
                 </h3>
             </div>
 
-            <img src="../public/img/biblio.jpeg" class="w-96 h-auto" alt="Libros">
+            <img 
+                src="{{ asset('img/biblio.jpeg') }}" 
+                class="w-full md:w-96 h-auto object-cover rounded-md" 
+                alt="Libros"
+            >
 
-            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center">
-                <h3 class="text-black text-center">
-                    La lectura es para la<br> mente lo que el ejercicio<br> es para el cuerpo.<br>
-                    <br>
-                    <i>Richar Steele</i>
+            <div class="bg-amber-200 p-4 rounded-md flex items-center justify-center md:w-1/3">
+                <h3 class="text-black text-center text-lg">
+                La lectura es para la<br> mente lo que el ejercicio<br> es para el cuerpo.<br><br>
+                <i>Richard Steele</i>
                 </h3>
             </div>
         </section>

@@ -13,17 +13,17 @@ class BookController extends Controller
     public function mostrarVistaLibros(Request $request)
 {
     $generos = [
-        'Narrativa', 'Historia', 'Terror', 'Comedia', 'Filosofía', 'Ciencia Ficción', 
+        'Historia', 'Terror', 'Comedia', 'Filosofía', 'Ciencia Ficción', 
         'Novela', 'Ensayo', 'Poesía', 'Cultura', 'Fantasía', 'Deporte', 'Arte', 
         'Psicología', 'Biografía'
     ];
 
     $generoSeleccionado = $request->get('genero');
     
-    if ($generoSeleccionado) {
-        $librosPorGenero = Book::where('genero', $generoSeleccionado)->get();
+    if ($generoSeleccionado === 'Todos' || !$generoSeleccionado) {
+        $librosPorGenero = Book::all();  
     } else {
-        $librosPorGenero = Book::all();
+        $librosPorGenero = Book::where('genero', $generoSeleccionado)->get();
     }
 
     return view('bookMain', compact('generos', 'librosPorGenero'));

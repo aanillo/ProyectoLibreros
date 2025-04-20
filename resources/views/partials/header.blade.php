@@ -5,7 +5,6 @@
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between w-full gap-4">
 
-      
       <div class="flex-shrink-0">
         <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
       </div>
@@ -22,14 +21,13 @@
       </button>
 
       
-      <div 
-        class="hidden md:flex md:items-center md:gap-8 w-full justify-between" 
-        :class="{ 'flex flex-col mt-4': navOpen }"
-      >
-
+      <div class="hidden md:flex md:items-center md:gap-8 w-full justify-between">
+        
         
         <div class="flex flex-col text-left ml-48">
-          <h1 class="text-3xl md:text-4xl text-white leading-tight">Libreros</h1>
+          <a href="{{ url('/') }}" class="text-white">
+            <h1 class="text-3xl md:text-4xl text-white leading-tight">Libreros</h1>
+          </a>
           <div class="flex gap-12 mt-3">
             <a href="{{ route('books') }}" class="text-white text-lg md:text-xl transition-transform duration-300 hover:scale-125">
               Libros
@@ -54,7 +52,18 @@
         </div>
 
       </div>
-
     </div>
+
+    
+    <div x-show="navOpen" class="md:hidden mt-4 flex flex-col gap-4 text-white">
+      <h1 class="text-2xl">Libreros</h1>
+      <a href="{{ route('books') }}" class="text-lg transition-transform duration-300 hover:scale-110">Libros</a>
+      <a href="{{ route('writers') }}" class="text-lg transition-transform duration-300 hover:scale-110">Autores</a>
+      <hr class="border-white my-2" />
+      <span class="text-sm">El rincón de los lectores más apasionados</span>
+      <a href="{{ route('login.show') }}" class="text-lg transition-transform duration-300 hover:scale-110">Login</a>
+      <a href="{{ route('register.show') }}" class="text-lg transition-transform duration-300 hover:scale-110">Registro</a>
+    </div>
+
   </div>
 </header>

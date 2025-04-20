@@ -14,4 +14,10 @@ class WriterController extends Controller
 
         return view('writerMain', compact('autores'));
     }
+
+    public function showWriter($id) {
+        $writer = Writer::findOrFail($id);
+        $booksWriter = $writer->books;
+        return view('writerView', compact('writer', 'booksWriter'));
+    }
 }

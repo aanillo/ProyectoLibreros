@@ -18,11 +18,11 @@
     @include('partials.header')
 @endauth
 
-<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-64">
+<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBRO</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $book->titulo }}</h2>
-        <div class="flex justify-center mt-6">
+        <div class="flex justify-center">
             <img src="{{ $book->imagen }}" alt="{{ $book->titulo }}" 
                 class="max-w-md max-h-[400px] w-90% object-cover rounded-md shadow-md mt-8 mb-16">
         </div>
@@ -51,17 +51,17 @@
                         :class="valoracion >= star ? 'text-yellow-500' : 'text-gray-300'"></i>
                     </template>
                 </div>
-                <form action="{{ route('rateBook', $book->id) }}" method="POST" class="mt-2">
+                <form action="{{ route('rateBook', $book->id) }}" method="POST">
                     @csrf
                     <input type="hidden" name="valoracion" x-bind:value="valoracion">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Enviar valoración</button>
+                    <button type="submit" class="bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-600">Enviar valoración</button>
                 </form>
                 </div>
             @endauth
         </div>
         </div>
 
-        <div class="flex items-center gap-4 mb-16 mt-8">
+        <div class="flex items-center gap-4 mb-8 mt-16">
         <h3 class="text-lg">Volver a Libros:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>
