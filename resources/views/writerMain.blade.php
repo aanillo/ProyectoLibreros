@@ -22,24 +22,41 @@
       x-data="{
           currentPage: 1,
           authorsPerPage: 15,
+          searchQuery: '',
+          get filteredAuthors() {
+              if (!this.searchQuery) return this.allAuthors;
+              const query = this.searchQuery.toLowerCase();
+              return this.allAuthors.filter(autor =>
+                  autor.nombre?.toLowerCase().includes(query)
+              );
+          },
           get paginatedAuthors() {
               const start = (this.currentPage - 1) * this.authorsPerPage;
-              const end = start + this.authorsPerPage;
-              return this.allAuthors.slice(start, end);
+              return this.filteredAuthors.slice(start, start + this.authorsPerPage);
           },
           get totalPages() {
-              return Math.ceil(this.allAuthors.length / this.authorsPerPage);
+              return Math.ceil(this.filteredAuthors.length / this.authorsPerPage);
           },
           allAuthors: @js($autores),
           baseUrl: '{{ url('writers/autor') }}/'
       }">
+      
     <div class="max-w-4xl mx-auto mb-12 px-4 w-full">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTORES</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Consulta información sobre tus autores favoritos y sus mejores obras</h2>
-        <input class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-0.5" placeholder="Introduce nombre del autor">
     </div>
 
-    
+    <!-- Campo de búsqueda de autores -->
+    <div class="mb-6 w-full max-w-md mx-auto">
+        <input
+            type="text"
+            x-model="searchQuery"
+            placeholder="Buscar autor por nombre"
+            class="w-full p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+    </div>
+
+    <!-- Mostrar los autores filtrados -->
     <div class="max-w-6xl w-full px-4 mb-16">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="autor in paginatedAuthors" :key="autor.id">
@@ -52,7 +69,7 @@
         </div>
     </div>
 
-    
+    <!-- Paginación -->
     <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl">
         <button 
             @click="if (currentPage > 1) currentPage--"
@@ -75,7 +92,7 @@
         </button>
     </div>
 
-    
+    <!-- Enlace de regreso a la página principal -->
     <div class="flex items-center gap-4 mb-16 mt-8">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth

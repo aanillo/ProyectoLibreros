@@ -10,6 +10,15 @@ Route::get('/libros', [BookController::class, 'mostrarPorGenero'])->name('libros
 Route::get('/libro/{id}', [BookController::class, 'showBook'])->name('show');
 Route::post('/books/{id}/rate', [BookController::class, 'rate'])->name('rateBook')->middleware('auth');
 
+Route::get('/admin/books', [BookController::class, 'indexBooks'])->name('admin.books');
+
+Route::get('/insert', [BookController::class, 'showInsert'])->name('insert');
+Route::post('/store', [BookController::class, 'doInsert'])->name('doInsert');
+Route::get('/admin/books/{id}/edit', [BookController::class, 'edit'])->name('edit');
+Route::put('/admin/books/{id}', [BookController::class, 'update'])->name('update');
+Route::delete('/admin/books/{id}', [BookController::class, 'delete'])->name('delete');
+
+
 Route::middleware(['auth'])->group(function() {
     //Route::get('/', [BookController::class, 'mostrarVistaLibros'])->name('books');
     // Route::get('/generos', [BookController::class, 'showGeneros'])->name('generos');

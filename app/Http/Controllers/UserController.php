@@ -80,30 +80,44 @@ class UserController extends Controller
         return view('login');
     }
 
+
+    
     public function doLogin(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        "email" => "required|email:rfc,dns|exists:users,email",
-        "password" => "required",
-    ], [
-        "email.required" => "El campo de correo electrónico es obligatorio.",
-        "email.email" => "Por favor, introduce un correo electrónico válido.",
-        "email.exists" => "El correo electrónico no está registrado.",
-        "password.required" => "El campo de contraseña es obligatorio.",
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
+    {
+        $validator = Validator::make($request->all(), [
+            "email" => "required|email:rfc,dns|exists:users,email",
+            "password" => "required",
+        ], [
+            "email.required" => "El campo de correo electrónico es obligatorio.",
+            "email.email" => "Por favor, introduce un correo electrónico válido.",
+            "email.exists" => "El correo electrónico no está registrado.",
+            "password.required" => "El campo de contraseña es obligatorio.",
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        $credentials = $request->only('email', 'password');
+        $user = User::where('email', $credentials['email'])->first();
+    
+        if ($user) {
+            
+            if ($user->rol === 'admin' && $credentials['password'] === 'Admin+123') {  // Aquí puedes ajustar la contraseña si es admin
+                Auth::login($user);
+                return redirect()->route('admin'); 
+            }
+    
+            
+            if (Auth::attempt($credentials)) {
+                return redirect()->intended('/home'); 
+            }
+        }
+    
+        return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
     }
+    
 
-    $credentials = $request->only('email', 'password');
-
-    if (Auth::attempt($credentials)) {
-        return redirect()->intended('/home');
-    }
-
-    return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
-}
 
 public function logout(){
     Auth::logout(); 
@@ -129,4 +143,10 @@ public function deleteUser(Request $request){
     return redirect()->route('login')->withErrors(['error' => 'No se pudo eliminar tu cuenta.']);
 }
 
+
+public function indexUsers()
+    {
+        $users = User::all();
+        return view('usersAdminView', compact('users'));
+    }
 }

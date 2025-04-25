@@ -37,26 +37,42 @@
         </ul>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-8 mb-8 px-4">
-        <h2 class="text-xl mt-2 text-center mb-6">También puedes buscar por nombre del libro o por autor:</h2>
-        <input class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-0.5" placeholder="Introduce libro o autor">
-    </div>
-
     <div class="max-w-4xl mx-auto mt-8 mb-24 px-4 w-full"
          x-data="{
              currentPage: 1,
              booksPerPage: 15,
+             searchQuery: '',
+             get filteredBooks() {
+    if (!this.searchQuery) return this.allBooks;
+
+    const query = this.searchQuery.toLowerCase();
+
+    return this.allBooks.filter(book => {
+        const titulo = book.titulo ? book.titulo.toLowerCase() : '';
+        const autor = book.autor ? book.autor.toLowerCase() : '';
+        return titulo.includes(query) || autor.includes(query);
+    });
+},
              get paginatedBooks() {
                  const start = (this.currentPage - 1) * this.booksPerPage;
-                 const end = start + this.booksPerPage;
-                 return this.allBooks.slice(start, end);
+                 return this.filteredBooks.slice(start, start + this.booksPerPage);
              },
              get totalPages() {
-                 return Math.ceil(this.allBooks.length / this.booksPerPage);
+                 return Math.ceil(this.filteredBooks.length / this.booksPerPage);
              },
              allBooks: @js($librosPorGenero),
              baseUrl: '{{ url('books/libro') }}/'
          }">
+
+         <div class="mb-6 w-full max-w-md mx-auto">
+            <input
+                type="text"
+                x-model="searchQuery"
+                placeholder="Buscar libro por título"
+                class="w-full p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            />
+        </div>
+
         <h2 class="text-xl mt-2 text-center mb-6">
             Libros en el género: 
             <span>
@@ -64,11 +80,12 @@
             </span>
         </h2>
 
-        <div x-show="allBooks.length === 0" class="text-center text-lg font-semibold text-red-500">
-            No se encontraron libros en este género.
+
+        <div x-show="filteredBooks.length === 0" class="text-center text-lg font-semibold text-red-500">
+            No se encontraron libros.
         </div>
       
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="allBooks.length > 0">
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="filteredBooks.length > 0">
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
                      class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition">
@@ -78,7 +95,7 @@
             </template>
         </div>
 
-        <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl">
+        <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl" x-show="totalPages > 1">
             <button 
                 @click="if (currentPage > 1) currentPage--"
                 class="hover:text-amber-500 transition"
@@ -110,7 +127,7 @@
         @endauth
     </div>
 </main>
-</body>
 
 @include('partials.footer')
+</body>
 </html>

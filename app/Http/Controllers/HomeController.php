@@ -22,4 +22,17 @@ class HomeController extends Controller
     $randomWriters = Writer::all()->shuffle()->take(9);
     return view('homeLog', compact('user', 'randomBooks', 'randomWriters'));
 }
+
+
+public function indexAdmin()
+{
+    $user = auth()->user();
+
+    if (!$user || $user->rol !== 'admin') {
+        abort(403, 'No tienes permiso para acceder a esta página.');
+    }
+
+    return view('adminHome', compact('user'));
+}
+
 }
