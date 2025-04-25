@@ -14,3 +14,9 @@ Route::post('/deleteUser', [UserController::class, 'deleteUser'])->name('deleteU
 Route::get('/logout/confirmar', [UserController::class, 'mostrarViewLogout'])->name('logout.confirm');
 
 Route::get('/admin/users', [UserController::class, 'indexUsers'])->name('admin.users');
+
+Route::get('/insert', [UserController::class, 'showInsert'])->name('insertUser');
+Route::post('/store', [UserController::class, 'doInsert'])->name('doInsertUser');
+Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('editUsers');
+Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('updateUsers');
+Route::delete('/admin/users/{id}', [UserController::class, 'delete'])->name('deleteUsers');

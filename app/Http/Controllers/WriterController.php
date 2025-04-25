@@ -82,7 +82,7 @@ class WriterController extends Controller
     public function edit($id)
     {
         $writer = Writer::findOrFail($id);
-        return view('editWriter', compact('writer', ));  
+        return view('editWriter', compact('writer'));  
     }
     
 
