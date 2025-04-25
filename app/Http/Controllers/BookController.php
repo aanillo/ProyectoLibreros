@@ -204,7 +204,7 @@ public function update(Request $request, $id)
     $book->precio = $request->precio;
     $book->save();
 
-    return redirect()->route('admin.books');  
+    return redirect()->route('admin.books')->with('success', 'Libro editado correctamente.');  
 }
 
 

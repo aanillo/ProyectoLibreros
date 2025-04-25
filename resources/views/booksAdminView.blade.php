@@ -24,15 +24,6 @@
             <a href="{{ route('insert') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Insertar</a>
         </div>
 
-        <!-- Buscador de libros -->
-        <div class="mb-6 w-full max-w-md">
-            <input
-                type="text"
-                x-model="searchQuery"
-                placeholder="Buscar libro por título"
-                class="w-full p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
-        </div>
 
         <section class="w-full overflow-x-auto"
         x-data="{
@@ -58,6 +49,14 @@
             books: @js($books),
             baseUrl: '{{ url('books/admin') }}'
         }">
+        <div class="mb-6 w-full flex justify-center">
+        <input
+            type="text"
+            x-model="searchQuery"
+            placeholder="Buscar libro por titulo"
+            class="w-full max-w-md p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+    </div>
             <h2 class="text-2xl text-center font-bold mb-6">Lista de libros</h2>
             <table class="min-w-full bg-white border border-gray-200">
                 <thead>

@@ -35,7 +35,7 @@
         
         <div class="flex-grow flex flex-col items-center text-center">
             <h1 class="text-3xl mb-8 font-bold">AUTORES</h1>
-            <a href="#" class="w-52 h-52 flex items-center justify-center text-8xl mb-8 border-2 border-solid border-gray-800 rounded-lg p-4 hover:bg-gray-200">
+            <a href="{{ route('admin.writers') }}" class="w-52 h-52 flex items-center justify-center text-8xl mb-8 border-2 border-solid border-gray-800 rounded-lg p-4 hover:bg-gray-200">
             <i class="fas fa-pen"></i> 
             </a>
         </div>
