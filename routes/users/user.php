@@ -20,3 +20,8 @@ Route::post('/store', [UserController::class, 'doInsert'])->name('doInsertUser')
 Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('editUsers');
 Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('updateUsers');
 Route::delete('/admin/users/{id}', [UserController::class, 'delete'])->name('deleteUsers');
+Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
+Route::get('/profile/{id}/edit', [UserController::class, 'editProfile'])->name('editProfile');
+Route::put('/profile/{id}', [UserController::class, 'updateProfile'])->name('updateProfile');
+
+

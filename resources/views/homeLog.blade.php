@@ -12,7 +12,7 @@
 
     @include('partials.headerLog') 
 
-    <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-64">
+    <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-52">
         
         <section class="text-center mb-8">
             <h1 class="text-3xl font-bold">Libreros, un espacio para los amantes de la lectura</h1>

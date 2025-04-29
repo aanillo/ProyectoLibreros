@@ -227,9 +227,31 @@ public function indexUsers()
             "email" => "required|email:rfc,dns",
             "fecha_nacimiento" => "required|date|before_or_equal:" . now()->subYears(13)->format('Y-m-d'),
             "localidad" => "required|string|max:50",
-            // Sin la validación para la contraseña porque no es necesario para el administrador
+
         ], [
-            // Mensajes de validación...
+           "nombre.required" => "El campo nombre es obligatorio.",
+            "nombre.regex" => "El nombre solo puede contener letras y espacios.",
+            "nombre.max" => "El nombre no puede tener más de 30 caracteres.",
+
+            "apellidos.required" => "El campo apellidos es obligatorio.",
+            "apellidos.regex" => "Los apellidos solo pueden contener letras y espacios.",
+            "apellidos.max" => "Los apellidos no pueden tener más de 50 caracteres.",
+
+            "username.required" => "El nombre de usuario es obligatorio.",
+            "username.regex" => "El nombre de usuario solo puede contener letras, números y espacios.",
+            "username.min" => "El nombre de usuario debe tener al menos 4 caracteres.",
+            "username.max" => "El nombre de usuario no puede tener más de 20 caracteres.",
+
+            "email.required" => "El correo electrónico es obligatorio.",
+            "email.email" => "Debe proporcionar un correo electrónico válido.",
+
+            "fecha_nacimiento.required" => "La fecha de nacimiento es obligatoria.",
+            "fecha_nacimiento.date" => "Debe proporcionar una fecha válida.",
+            "fecha_nacimiento.before_or_equal" => "Debes tener al menos 13 años para registrarte.",
+
+            "localidad.required" => "La localidad es obligatoria.",
+            "localidad.string" => "La localidad debe ser un texto válido.",
+            "localidad.max" => "La localidad no puede tener más de 50 caracteres."
         ]);
     
         if ($validator->fails()) {
@@ -259,7 +281,76 @@ public function indexUsers()
     public function delete($id) {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('admin.users')->with('success', 'El usuario ha sido eliminado correctamente');
-        
+        return redirect()->route('admin.users')->with('success', 'El usuario ha sido eliminado correctamente'); 
     }
+
+    public function showProfile($id)
+{
+    $user = auth()->user();
+    return view('userProfile', compact(var_name: 'user'));
+}
+
+public function editProfile($id) {
+    $user = User::findOrFail($id);
+    return view('editProfile', compact('user'));
+}
+
+
+public function updateProfile(Request $request, $id) {
+    $validator = Validator::make($request->all(), [
+        "nombre" => "required|regex:/^[\pL\s]+$/u|max:30",
+        "apellidos" => "required|regex:/^[\pL\s]+$/u|max:50",
+        "username" => "required|regex:/^[\pL\s0-9]+$/u|min:4|max:20",
+        "email" => "required|email:rfc,dns",
+        "fecha_nacimiento" => "required|date|before_or_equal:" . now()->subYears(13)->format('Y-m-d'),
+        "localidad" => "required|string|max:50",
+
+    ], [
+       "nombre.required" => "El campo nombre es obligatorio.",
+        "nombre.regex" => "El nombre solo puede contener letras y espacios.",
+        "nombre.max" => "El nombre no puede tener más de 30 caracteres.",
+
+        "apellidos.required" => "El campo apellidos es obligatorio.",
+        "apellidos.regex" => "Los apellidos solo pueden contener letras y espacios.",
+        "apellidos.max" => "Los apellidos no pueden tener más de 50 caracteres.",
+
+        "username.required" => "El nombre de usuario es obligatorio.",
+        "username.regex" => "El nombre de usuario solo puede contener letras, números y espacios.",
+        "username.min" => "El nombre de usuario debe tener al menos 4 caracteres.",
+        "username.max" => "El nombre de usuario no puede tener más de 20 caracteres.",
+
+        "email.required" => "El correo electrónico es obligatorio.",
+        "email.email" => "Debe proporcionar un correo electrónico válido.",
+
+        "fecha_nacimiento.required" => "La fecha de nacimiento es obligatoria.",
+        "fecha_nacimiento.date" => "Debe proporcionar una fecha válida.",
+        "fecha_nacimiento.before_or_equal" => "Debes tener al menos 13 años para registrarte.",
+
+        "localidad.required" => "La localidad es obligatoria.",
+        "localidad.string" => "La localidad debe ser un texto válido.",
+        "localidad.max" => "La localidad no puede tener más de 50 caracteres."
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    $user = User::findOrFail($id);
+
+    $user->nombre = $request->nombre;
+    $user->apellidos = $request->apellidos;
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->fecha_nacimiento = $request->fecha_nacimiento;
+    $user->localidad = $request->localidad;
+
+    if ($request->has('password') && !empty($request->password)) {
+        $user->password = Hash::make($request->password);
+    }
+
+    $user->save();
+
+    return redirect()->route('profile', ['id' => $user->id])->with('success', 'El usuario ha sido editado correctamente');
+}
+
 }

@@ -32,7 +32,9 @@
           <div class="flex items-center gap-6 mt-3">
             <div class="flex items-center gap-2">
               <img src="{{ asset('img/perfil.png') }}" class="w-10 h-auto" alt="Perfil">
-              <span class="text-white text-lg transition-transform duration-300 hover:scale-125">{{ auth()->user()->username }}</span>
+              <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-lg transition-transform duration-300 hover:scale-125">
+                  {{ auth()->user()->username }}
+              </a>
             </div>
             <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
             <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
