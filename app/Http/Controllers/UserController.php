@@ -353,4 +353,56 @@ public function updateProfile(Request $request, $id) {
     return redirect()->route('profile', ['id' => $user->id])->with('success', 'El usuario ha sido editado correctamente');
 }
 
+public function editProfilePsw($id)
+{
+    $user = User::findOrFail($id);
+    return view('editPsw', compact('user'));
+}
+
+
+public function updateProfilePsw(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        "password" => "required|min:8|max:20|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/",
+        "password_repeat" => "required|same:password"
+    ], [
+        "password.required" => "La contraseña es obligatoria.",
+        "password.min" => "La contraseña debe tener al menos 8 caracteres.",
+        "password.max" => "La contraseña no debe superar los 20 caracteres.",
+        "password.regex" => "La contraseña debe contener al menos una letra minúscula, una mayúscula y un dígito.",
+        "password_repeat.required" => "Debes confirmar tu contraseña.",
+        "password_repeat.same" => "Las contraseñas no coinciden.",
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    $user = User::findOrFail($id);
+
+    if (Hash::check($request->password, $user->password)) {
+        return redirect()->back()->withErrors(['password' => 'La nueva contraseña no puede ser igual a la actual.'])->withInput();
+    }
+
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    return redirect()->route('profile', ['id' => $user->id])->with('success', 'Contraseña actualizada correctamente.');
+}
+
+public function deleteShow($id)
+{
+    $user = User::findOrFail($id);
+    return view('confirmDelete', compact('user'));
+}
+
+
+public function deleteProfile($id) {
+    $user = User::findOrFail($id);
+    $user->delete();
+    return redirect('/')->with('success', 'El usuario ha sido eliminado correctamente');
+}
+
+
+
 }

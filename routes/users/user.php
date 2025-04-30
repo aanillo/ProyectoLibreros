@@ -23,5 +23,7 @@ Route::delete('/admin/users/{id}', [UserController::class, 'delete'])->name('del
 Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
 Route::get('/profile/{id}/edit', [UserController::class, 'editProfile'])->name('editProfile');
 Route::put('/profile/{id}', [UserController::class, 'updateProfile'])->name('updateProfile');
-
-
+Route::get('/profile/{id}/editPsw', [UserController::class, 'editProfilePsw'])->name('editPsw');
+Route::put('/profile/{id}/psw', [UserController::class, 'updateProfilePsw'])->name('updatePsw');
+Route::get('/profile/{id}/del', [UserController::class, 'deleteShow'])->name('deleteShow');
+Route::delete('/profile/{id}/delProf', [UserController::class, 'deleteProfile'])->name('deleteProfile');

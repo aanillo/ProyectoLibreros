@@ -45,11 +45,11 @@
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Cambiar contraseña:</h3>
-                <a href="#" class="btnHome bg-yellow-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Reestablecer</a>
+                <a href="{{ route('editPsw', ['id' => $user->id]) }}" class="btnHome bg-yellow-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Reestablecer</a>
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Eliminar cuenta:</h3>
-                <a href="#" class="btnHome bg-red-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-600">Eliminar</a>
+                <a href="{{ route('deleteShow', ['id' => $user->id]) }}" class="btnHome bg-red-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-600">Eliminar</a>
             </div>
         </div>
 
