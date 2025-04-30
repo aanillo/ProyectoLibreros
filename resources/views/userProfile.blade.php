@@ -19,8 +19,8 @@
             <div class="flex flex-col md:flex-row items-center md:items-start bg-amber-200 shadow-lg rounded-xl p-6 md:p-10 gap-8 mt-8">
                 
                 
-                <div class="w-60 h-60 flex-shrink-0 mt-4">
-                    <img src="{{ asset('img/default-profile.png') }}" alt="Foto de perfil" class="w-full h-full object-cover rounded-full border border-gray-300">
+                <div class="w-60 h-60 flex-shrink-0 mt-8">
+                    <img src="{{ asset('img/book.jpg') }}" alt="Foto de perfil" class="w-full h-full object-cover rounded-full border border-gray-300">
                 </div>
 
                 
@@ -41,22 +41,24 @@
         <div class="flex items-center gap-16 mb-8 mt-8">
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Editar perfil:</h3>
-                <a href="{{ route('editProfile', ['id' => $user->id]) }}" class="btnHome bg-blue-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-blue-600">Editar</a>
+                <a href="{{ route('editProfile', ['id' => $user->id]) }}" class="btnHome bg-blue-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-blue-700">Editar</a>
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Cambiar contraseña:</h3>
-                <a href="{{ route('editPsw', ['id' => $user->id]) }}" class="btnHome bg-yellow-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Reestablecer</a>
+                <a href="{{ route('editPsw', ['id' => $user->id]) }}" class="btnHome bg-yellow-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700">Reestablecer</a>
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Eliminar cuenta:</h3>
-                <a href="{{ route('deleteShow', ['id' => $user->id]) }}" class="btnHome bg-red-500 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-600">Eliminar</a>
+                <a href="{{ route('deleteShow', ['id' => $user->id]) }}" class="btnHome bg-red-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-700">Eliminar</a>
             </div>
         </div>
 
-        <div class="flex items-center gap-4 mb-16 mt-8">
+        <div class="flex items-center gap-4 mb-8 mt-8">
             <h3 class="text-lg">Volver atrás:</h3>
             <a href="{{ route('home') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>
+
+        <img src="{{ asset('img/book2.jpg') }}" class="w-80 h-auto my-6 mb-16" alt="Libro" />
 
     </main>
 

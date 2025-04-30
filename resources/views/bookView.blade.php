@@ -46,7 +46,7 @@
                 <strong>Valora este libro:</strong>
                 <div class="flex space-x-1">
                     <template x-for="star in 5" :key="star">
-                        <i class="fas fa-star text-yellow-400 cursor-pointer"
+                        <i class="fas fa-star text-yellow-300 cursor-pointer"
                         @click="valoracion = star"
                         :class="valoracion >= star ? 'text-yellow-500' : 'text-gray-300'"></i>
                     </template>
@@ -54,7 +54,7 @@
                 <form action="{{ route('rateBook', $book->id) }}" method="POST">
                     @csrf
                     <input type="hidden" name="valoracion" x-bind:value="valoracion">
-                    <button type="submit" class="bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-600">Enviar valoración</button>
+                    <button type="submit" class="bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700">Enviar valoración</button>
                 </form>
                 </div>
             @endauth

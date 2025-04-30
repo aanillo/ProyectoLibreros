@@ -64,8 +64,7 @@ public function rate(Request $request, $id) {
     $book->valoracion = $average;
     $book->save();
 
-    return redirect()->route('show', $book->id)
-                 ->with('success', 'Tu valoración se ha guardado correctamente.');
+    return redirect()->back()->with('success', 'Tu valoración se ha guardado correctamente.');
 
 }
       

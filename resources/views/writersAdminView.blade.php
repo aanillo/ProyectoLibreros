@@ -28,7 +28,7 @@
         <section class="w-full overflow-x-auto"
     x-data="{
         currentPage: 1,
-        writersPerPage: 20,  // Asegúrate de usar writersPerPage
+        writersPerPage: 15,  
         searchQuery: '',
         get filteredWriters() {
             if (!this.searchQuery) {

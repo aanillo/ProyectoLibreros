@@ -21,7 +21,7 @@
 <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56"
       x-data="{
           currentPage: 1,
-          authorsPerPage: 15,
+          authorsPerPage: 12,
           searchQuery: '',
           get filteredAuthors() {
               if (!this.searchQuery) return this.allAuthors;
@@ -46,7 +46,7 @@
         <h2 class="text-xl mt-2 text-center mb-6">Consulta información sobre tus autores favoritos y sus mejores obras</h2>
     </div>
 
-    <!-- Campo de búsqueda de autores -->
+    
     <div class="mb-6 w-full max-w-md mx-auto">
         <input
             type="text"
@@ -56,7 +56,7 @@
         />
     </div>
 
-    <!-- Mostrar los autores filtrados -->
+   
     <div class="max-w-6xl w-full px-4 mb-16">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="autor in paginatedAuthors" :key="autor.id">
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <!-- Paginación -->
+    
     <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl">
         <button 
             @click="if (currentPage > 1) currentPage--"
@@ -92,7 +92,7 @@
         </button>
     </div>
 
-    <!-- Enlace de regreso a la página principal -->
+   
     <div class="flex items-center gap-4 mb-16 mt-8">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth

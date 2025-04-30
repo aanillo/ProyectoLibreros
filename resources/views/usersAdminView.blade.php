@@ -27,7 +27,7 @@
         <section class="w-full overflow-x-auto"
             x-data="{
                 currentPage: 1,
-                usersPerPage: 20,
+                usersPerPage: 15,
                 searchQuery: '',
                 get filteredUsers() {
                     if (!this.searchQuery) return this.users;
@@ -47,7 +47,7 @@
             }"
         >
 
-        <!-- Buscador -->
+        
         <div class="mb-6 w-full flex justify-center">
             <input
                 type="text"

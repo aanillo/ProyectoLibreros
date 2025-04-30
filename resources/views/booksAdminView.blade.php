@@ -28,7 +28,7 @@
         <section class="w-full overflow-x-auto"
         x-data="{
             currentPage: 1,
-            booksPerPage: 20,
+            booksPerPage: 15,
             searchQuery: '',
             get filteredBooks() {
                 if (!this.searchQuery) {

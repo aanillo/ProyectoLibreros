@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <!-- Perfil -->
+        
         <div class="flex flex-col md:mr-24 text-left">
           <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
           <div class="flex items-center gap-6 mt-3">

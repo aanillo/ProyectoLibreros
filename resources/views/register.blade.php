@@ -129,9 +129,9 @@
 
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-                <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-600"
+                <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700"
                     type="submit">Registrarse</button>
-                <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-600"
+                <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700"
                     type="reset">Cancelar</button>
             </div>
         </form>

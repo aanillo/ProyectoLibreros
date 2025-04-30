@@ -44,17 +44,17 @@
 
             <div class="flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-2 sm:space-y-0 mt-4">
                 <button
-                    class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-600"
+                    class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700"
                     type="submit">Login</button>
                 <button
-                    class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-600"
+                    class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700"
                     type="reset">Cancelar</button>
             </div>
 
             <div class="text-center mt-4 space-y-2">
                 <p>¿Aún no estás registrado?</p>
                 <a href="{{ route('register.show') }}"
-                    class="bg-blue-500 text-black font-bold border-2 border-black px-6 py-2 rounded-md hover:bg-blue-600 inline-block">Registrarse</a>
+                    class="bg-blue-500 text-black font-bold border-2 border-black px-6 py-2 rounded-md hover:bg-blue-700 inline-block">Registrarse</a>
             </div>
         </form>
 

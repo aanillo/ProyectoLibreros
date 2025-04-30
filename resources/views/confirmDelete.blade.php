@@ -23,8 +23,16 @@
             </div>
 
             <div class="flex flex-col items-center">
+                <h3 class="text-lg">Volver atrás:</h3>
+                <a href="{{ route('profile', ['id' => $user->id]) }}"
+                class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700">
+                Usuarios
+                </a>
+            </div>
+
+            <div class="flex flex-col items-center">
                 <h3 class="text-lg">Volver a Home:</h3>
-                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700">Home</a>
             </div>
         </div>
         <h3 class="text-lg mt-16">En <strong>Libreros</strong> estaremos encantados de volver a recibirle</h3>

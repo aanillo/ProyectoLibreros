@@ -91,9 +91,9 @@
             @error("localidad") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-                <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-600"
+                <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700"
                     type="submit">Actualizar Usuario</button>
-                <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-600"
+                <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700"
                     type="reset">Cancelar</button>
             </div>
 
@@ -107,7 +107,7 @@
             </a>
         </div>
 
-        <div class="flex items-center gap-4 mb-16 mt-8">
+        <div class="flex items-center gap-4 mb-8 mt-8">
             <h3 class="text-lg">Volver a la vista principal:</h3>
             <a href="{{ route('home') }}"
                class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">
@@ -115,6 +115,8 @@
             </a>
         </div>
 
+        <img src="{{ asset('img/book2.jpg') }}" class="w-80 h-auto my-6 mb-16" alt="Libro" />
+        
     </main>
 
     @include('partials.footer')
