@@ -22,21 +22,20 @@
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTOR</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $writer->nombre }}</h2>
-        <div class="flex justify-center">
-            <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
-                class="max-w-md max-h-[400px] w-90% object-cover rounded-md shadow-md mt-8 mb-16">
+        
+        <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center items-start p-4 mt-8 mb-8">
+            <div class="flex-shrink-0">
+                <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
+                    class="max-w-md max-h-[300px] w-90% object-cover rounded-md shadow-md mt-8 mb-16">
+            </div>
+            <div class="flex flex-col justify-start max-w-md text-md">
+                <p class="mt-16 mb-8"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
+                <p class="mb-8"><strong>País:</strong> {{ $writer->pais }}</p>
+                <p class="mb-8"><strong>Fecha nacimiento:</strong> {{ \Carbon\Carbon::parse($writer->nacimiento)->format('d-m-Y') }}</p>
+                <p class="mb-16"><strong>Fecha fallecimiento:</strong> {{ \Carbon\Carbon::parse($writer->fallecimiento)->format('d-m-Y') }}</p>
+            </div>
         </div>
-    
-        <div class="flex flex-col justify-center">
-            <div class="flex flex-row justify-between w-full">
-                <p class="mb-2"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
-                <p class="mb-2"><strong>País:</strong> {{ $writer->pais }}</p>
-            </div>
-
-            <div class="flex flex-row justify-between w-full">
-                <p class="mb-2"><strong>Fecha nacimiento:</strong> {{ \Carbon\Carbon::parse($writer->nacimiento)->format('d-m-Y') }}</p>
-                <p class="mb-2"><strong>Fecha fallecimiento:</strong> {{ \Carbon\Carbon::parse($writer->fallecimiento)->format('d-m-Y') }}</p>
-            </div>
+            
            
             <div class="max-w-4xl mx-auto mt-12 mb-12 px-4 w-full"
      x-data="{
@@ -94,12 +93,13 @@
 </div>
 </div>
 
-        <div class="flex items-center gap-4 mb-8 mt-16">
-        <h3 class="text-lg">Volver a Libros:</h3>
+<div class="flex flex-row items-center gap-16">
+    <div class="flex items-center gap-4 mb-16 mt-16">
+        <h3 class="text-lg">Volver a Autores:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>
 
-        <div class="flex items-center gap-4 mb-16 mt-8">
+    <div class="flex items-center gap-4 mb-16 mt-16">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth
             <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
@@ -107,6 +107,7 @@
             <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
         @endauth
     </div>
+</div>
     
 
 </main>

@@ -41,7 +41,7 @@ public function show($id) {
 */
 
 public function showBook($id) {
-    $book = Book::findOrFail($id);
+    $book = Book::with('comments.user')->findOrFail($id); 
 
     return view('bookView', compact('book'));
 }

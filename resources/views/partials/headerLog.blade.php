@@ -37,6 +37,7 @@
               </a>
             </div>
             <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
+            <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Carro</a>
             <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
           </div>
         </div>
@@ -53,6 +54,7 @@
         <span class="text-lg">{{ auth()->user()->username }}</span>
       </div>
       <a href="#" class="text-lg transition-transform duration-300 hover:scale-110">Historial</a>
+      <a href="#" class="text-lg transition-transform duration-300 hover:scale-110">Carro</a>
       <a href="{{ route('logout.confirm') }}" class="text-lg transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
     </div>
 

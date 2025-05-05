@@ -1,30 +1,28 @@
 <footer class="bg-[#322411] text-white font-[Brawler] p-5">
-  <div class="flex flex-col md:flex-row justify-between items-start w-full gap-8 flex-wrap">
+  <div class="flex flex-col md:flex-row justify-between items-center w-full gap-8 flex-wrap text-center md:text-left">
 
-    <div class="flex-1 min-w-[250px] text-center">
-      <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" class="mx-auto mb-2">
-      <h1 class="text-xl font-bold">Libreros</h1>
+    <div class="flex-1 min-w-[250px] flex flex-col items-center">
+      <h1 class="text-xl font-bold mb-2">Libreros</h1>
+      <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" class="mx-auto">
     </div>
 
-   
-    <div class="flex-1 min-w-[250px] text-left space-y-3 mt-6 md:mt-0">
+    <div class="flex-1 min-w-[250px] space-y-3 mt-6 md:mt-0">
       <h3 class="text-lg font-semibold mb-4 underline">Información y contacto</h3>
       <p><strong>Dirección:</strong> Avenida Ana de Viya, 7, Cádiz</p>
       <p><strong>Correo:</strong> rrhh@libreros.com</p>
       <p><strong>Teléfono:</strong> 856223300</p>
     </div>
 
-   
-    <div class="flex-1 min-w-[250px] text-left mt-6 md:mt-0">
+    <div class="flex-1 min-w-[250px] mt-6 md:mt-0">
       <h3 class="text-lg font-semibold mb-4 underline">Redes sociales</h3>
       <div class="space-y-2">
-        <a class="flex items-center gap-2 text-white no-underline" href="#">
+        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline" href="#">
           <img src="{{ asset('img/ig.png') }}" alt="Icono de Instagram" width="35" height="15"> Instagram
         </a>
-        <a class="flex items-center gap-2 text-white no-underline" href="#">
+        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline" href="#">
           <img src="{{ asset('img/twx.png') }}" alt="Icono de X" width="35" height="15"> X
         </a>
-        <a class="flex items-center gap-2 text-white no-underline" href="#">
+        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline" href="#">
           <img src="{{ asset('img/fb.png') }}" alt="Icono de Facebook" width="35" height="15"> Facebook
         </a>
       </div>
