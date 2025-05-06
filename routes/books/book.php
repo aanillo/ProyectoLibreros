@@ -20,7 +20,7 @@ Route::put('/admin/books/{id}', [BookController::class, 'update'])->name('update
 Route::delete('/admin/books/{id}', [BookController::class, 'delete'])->name('delete');
 Route::post('/comments/store', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/{id}', [CommentController::class, 'show'])->name('comments.show');
-Route::delete('/comments/{id}/delete', [CommentController::class, 'deleteComment'])->name('comments.delete');
+Route::delete('/comments/{id}/delete', [CommentController::class, 'delete'])->name('comments.delete');
 
 Route::middleware(['auth'])->group(function() {
     //Route::get('/', [BookController::class, 'mostrarVistaLibros'])->name('books');

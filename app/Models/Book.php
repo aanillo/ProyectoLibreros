@@ -33,4 +33,16 @@ class Book extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function cartItems()
+{
+    return $this->hasMany(CartItem::class);
+}
+
+public function purchases()
+{
+    return $this->belongsToMany(Purchase::class)
+                ->withPivot('quantity', 'price_at_purchase');
+}
+
 }

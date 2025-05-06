@@ -42,7 +42,15 @@
             </div>
         </div>
 
+
         @auth
+        <div class="justify-center items-center flex flex-row gap-8 mt-16 mb-8">
+            <h2 class="text-lg"><strong>Comprar el libro:</strong></h2>
+            <button type="submit" class="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-700">
+                Comprar
+            </button>
+        </div>
+        
         <div class="flex flex-row items-center justify-center gap-32">
         <div x-data="{ valoracion: {{ isset($book->valoracion) ? $book->valoracion : 0 }} }" class="mt-6 flex flex-col items-center space-y-4">
             <strong>Valora este libro:</strong>
@@ -91,15 +99,28 @@
             </div>
 
             <div x-show="open" x-transition class="mt-4 space-y-4">
-                @forelse ($book->comments as $comment)
-                    <div class="p-4 border border-gray-300 rounded bg-gray-100 text-black text-lg">
-                        <p class="mb-2"><strong>{{ $comment->user->username ?? 'Anónimo' }}</strong> comentó:</p>
-                        <p class="italic">"{{ $comment->comment }}"</p>
-                        <p class="text-sm">Publicado el {{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
-                    </div>
-                @empty
-                    <p class="text-gray-500">No hay comentarios aún.</p>
-                @endforelse
+            @forelse ($book->comments as $comment)
+    <div class="p-4 border border-gray-300 rounded bg-gray-100 text-black text-lg relative">
+        <p class="mb-2"><strong>{{ $comment->user->username ?? 'Anónimo' }}</strong> comentó:</p>
+        <p class="italic">"{{ $comment->comment }}"</p>
+        <p class="text-sm">Publicado el {{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
+
+        @auth
+            @if (Auth::id() === $comment->user_id)
+                <form action="{{ route('comments.delete', $comment->id) }}" method="POST" class="absolute top-3 right-3">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-red-600 hover:text-red-800 text-md">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
+                </form>
+            @endif
+            @endauth
+            </div>
+        @empty
+            <p class="text-gray-500">No hay comentarios aún.</p>
+        @endforelse
+
             </div>
         </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -40,5 +41,32 @@ class CommentController extends Controller
     
         return view('commentform', compact('book', 'comments'));
     }
+
+    public function delete($id)
+{
+    $comment = Comment::findOrFail($id);
+
+    if (Auth::id() !== $comment->user_id) {
+        return back()->withErrors(['error' => 'No tienes permiso para eliminar este comentario.']);
+    }
+
+    $comment->delete();
+    return back()->with('success', 'Comentario eliminado con éxito.');
+}
     
+
+public function indexComments() 
+{
+    $comments = Comment::with(['book:id,titulo', 'user:id,username'])->get();
+    return view('commentsAdminView', compact('comments'));
+}
+
+public function deleteComment($id)
+{
+    $comment = Comment::findOrFail($id);
+    
+    $comment->delete();
+
+    return redirect()->route('admin.comments')->with('success', 'Comentario eliminado correctamente.');
+}
 }

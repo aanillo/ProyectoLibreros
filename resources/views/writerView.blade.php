@@ -26,7 +26,7 @@
         <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center items-start p-4 mt-8 mb-8">
             <div class="flex-shrink-0">
                 <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
-                    class="max-w-md max-h-[300px] w-90% object-cover rounded-md shadow-md mt-8 mb-16">
+                    class="max-w-md max-h-[300px] w-90% object-cover rounded-md shadow-md mt-4 mb-4">
             </div>
             <div class="flex flex-col justify-start max-w-md text-md">
                 <p class="mt-16 mb-8"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
