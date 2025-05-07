@@ -46,9 +46,10 @@
         @auth
         <div class="justify-center items-center flex flex-row gap-8 mt-16 mb-8">
             <h2 class="text-lg"><strong>Comprar el libro:</strong></h2>
-            <button type="submit" class="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-700">
-                Comprar
-            </button>
+            <a href="{{ route('purchaseCheckout', ['book_id' => $book->id]) }}" 
+       class="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-700">
+        Comprar
+    </a>
         </div>
         
         <div class="flex flex-row items-center justify-center gap-32">
@@ -74,6 +75,9 @@
         <textarea name="comment" placeholder="Escribe tu comentario aquí..." rows="2"
                   class="w-full border border-gray-400 rounded-md p-3 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                   required></textarea>
+                  @error('comment')
+    <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
+@enderror
         <input type="hidden" name="book_id" value="{{ $book->id }}">
         <div class="flex justify-center">
             <button class="w-60 bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700">

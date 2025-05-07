@@ -21,7 +21,11 @@ class CommentController extends Controller
             'book_id.required' => 'El identificador del libro es obligatorio.',
             'book_id.exists' => 'El libro seleccionado no existe.',
         ]);
-        
+
+
+        if ($this->containsBadWords($request->comment)) {
+            return back()->withErrors(['comment' => 'El comentario contiene lenguaje inapropiado.'])->withInput();
+        }
     
         $comment = new Comment();
         $comment->comment = $request->comment;
@@ -68,5 +72,13 @@ public function deleteComment($id)
     $comment->delete();
 
     return redirect()->route('admin.comments')->with('success', 'Comentario eliminado correctamente.');
+}
+
+private function containsBadWords($text)
+{
+    $badWords = ['idiota', 'cabrón', 'cabrona', 'tonto', 'estúpido', 'gilipollas', 'poya', 'picha', 'chocho', 'tonta', 'coño', 'puto', 'mierda', 'puta', 'subnormal']; 
+    $pattern = '/\b(' . implode('|', array_map('preg_quote', $badWords)) . ')\b/i';
+
+    return preg_match($pattern, $text);
 }
 }

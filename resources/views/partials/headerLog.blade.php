@@ -37,7 +37,7 @@
               </a>
             </div>
             <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
-            <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Carro</a>
+            <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Carro</a>
             <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
           </div>
         </div>
