@@ -31,7 +31,7 @@ class PurchaseController extends Controller
 
         $book = Book::findOrFail($request->book_id);
         $user = Auth::user();
-        $totalPrice = $book->price * $request->quantity;
+        $totalPrice = $book->precio * $request->quantity;
 
         $purchase = Purchase::create([
             'user_id' => $user->id,
@@ -62,7 +62,7 @@ class PurchaseController extends Controller
         ]);
 
         if (in_array($paymentIntent->status, ['requires_payment_method', 'requires_confirmation'])) {
-            return view('purchase.stripe', [
+            return view('stripe', [
                 'clientSecret' => $paymentIntent->client_secret,
                 'purchase' => $purchase,
             ]);
@@ -113,4 +113,63 @@ class PurchaseController extends Controller
 
         return redirect()->route('purchase.failure', ['purchase' => $purchase->id]);
     }
+
+    public function success(Purchase $purchase)
+{
+    return view('success', ['purchase' => $purchase]);
+}
+
+public function failure(Purchase $purchase)
+{
+    return view('cancel', ['purchase' => $purchase]);
+}
+
+public function checkoutAll(Request $request)
+{
+    $cart = $request->user()->cart;
+    return view('purchaseCheckoutAll', ['cart' => $cart]);
+}
+
+public function storeAll(Request $request)
+{
+    $request->validate([
+        'address' => 'required|string',
+        'payment_method' => 'required|in:card,paypal',
+        'book_ids' => 'required|array',
+        'quantities' => 'required|array',
+        'book_ids.*' => 'exists:books,id',
+        'quantities.*' => 'integer|min:1',
+    ]);
+
+    $user = Auth::user();
+    $totalPrice = 0;
+    $purchase = Purchase::create([
+        'user_id' => $user->id,
+        'total_price' => 0, 
+        'address' => $request->address,
+    ]);
+
+    foreach ($request->book_ids as $index => $bookId) {
+        $book = Book::findOrFail($bookId);
+        $quantity = $request->quantities[$index];
+        $totalPrice += $book->precio * $quantity;
+
+        $purchase->books()->attach($book->id, [
+            'quantity' => $quantity,
+            'price_at_purchase' => $book->precio,
+        ]);
+    }
+
+    
+    $purchase->update(['total_price' => $totalPrice]);
+
+    if ($request->payment_method === 'card') {
+        return $this->processStripePayment($purchase, $totalPrice);
+    } else {
+        return $this->processPayPalPayment($purchase);
+    }
+}
+
+
+    
 }
