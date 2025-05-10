@@ -8,4 +8,4 @@ Route::get('/purchase/success/{purchase}', [PurchaseController::class, 'success'
 Route::get('/purchase/failure/{purchase}', [PurchaseController::class, 'failure'])->name('purchase.failure');
 Route::get('/paypal/checkout/{purchase}', [PurchaseController::class, 'processPayPalPayment']);
 Route::get('/purchase-checkout', [PurchaseController::class, 'checkoutAll'])->name('purchaseCheckoutAll');
-Route::post('/cart/checkout', [PurchaseController::class, 'storeAll'])->name('purchase.store');
+Route::post('/cart/checkout', [PurchaseController::class, 'storeAll'])->name('purchase.storeAll');

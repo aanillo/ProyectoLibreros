@@ -49,5 +49,32 @@ public function addToCart(Request $request)
 
     return redirect()->back()->with('success', 'Libro añadido al carrito correctamente.');
 }
+public function remove($item_id)
+{
+    $user = Auth::user();
+
+    // Obtener el carrito del usuario autenticado
+    $cart = Cart::where('user_id', $user->id)->first();
+
+    if (!$cart) {
+        return redirect()->back()->with('error', 'Carrito no encontrado.');
+    }
+
+    
+    $cartItem = CartItem::where('cart_id', $cart->id)
+                        ->where('id', $item_id)  
+                        ->first();
+
+    
+    if ($cartItem) {
+        $cartItem->delete();
+        return redirect()->back()->with('success', 'Libro eliminado del carrito correctamente.');
+    } else {
+        return redirect()->back()->with('error', 'El libro no está en tu carrito.');
+    }
+}
+
+
+
 
 }
