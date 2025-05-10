@@ -45,7 +45,23 @@
 
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4">
 
-                <form action="{{ route('purchase.store') }}" method="POST" class="space-y-4 w-full">
+            @if($errors->any())
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('purchase.storeAll') }}" method="POST" class="space-y-4 w-full">
                     @csrf
 
                     @foreach ($cart->cartItems as $item)
@@ -54,19 +70,12 @@
                     @endforeach
 
                     <div>
-                        <label for="address" class="block mb-2 font-semibold">Dirección de envío:</label>
+                        <label for="address" class="block mb-2 font-semibold">Dirección de envío y localidad:</label>
                         <textarea id="address" name="address" rows="2" required
                                   class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
 
-                    <div>
-                        <label for="payment_method" class="block mb-2 font-semibold">Método de pago:</label>
-                        <select id="payment_method" name="payment_method" required
-                                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="card">Tarjeta</option>
-                            <option value="paypal">PayPal</option>
-                        </select>
-                    </div>
+                    <input type="hidden" name="payment_method" value="card">
 
                     <div class="flex justify-between gap-4">
                         <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-green-800">

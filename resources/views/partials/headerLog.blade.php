@@ -30,12 +30,9 @@
         <div class="flex flex-col md:mr-24 text-left">
           <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
           <div class="flex items-center gap-6 mt-3">
-            <div class="flex items-center gap-2">
-              <img src="{{ asset('img/perfil.png') }}" class="w-10 h-auto" alt="Perfil">
-              <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-lg transition-transform duration-300 hover:scale-125">
-                  {{ auth()->user()->username }}
-              </a>
-            </div>
+            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+              {{ auth()->user()->username }}
+            </a>
             <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
             <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Carro</a>
             <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
@@ -49,12 +46,12 @@
       <a href="{{ route('books') }}" class="text-lg transition-transform duration-300 hover:scale-110">Libros</a>
       <a href="{{ route('writers') }}" class="text-lg transition-transform duration-300 hover:scale-110">Autores</a>
       <hr class="border-white my-2" />
-      <div class="flex items-center gap-2">
-        <img src="{{ asset('img/perfil.png') }}" class="w-8 h-auto" alt="Perfil">
-        <span class="text-lg">{{ auth()->user()->username }}</span>
-      </div>
+        
+      <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-lg transition-transform duration-300 hover:scale-125">
+                  {{ auth()->user()->username }}
+              </a>
       <a href="#" class="text-lg transition-transform duration-300 hover:scale-110">Historial</a>
-      <a href="#" class="text-lg transition-transform duration-300 hover:scale-110">Carro</a>
+      <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-lg transition-transform duration-300 hover:scale-110">Carro</a>
       <a href="{{ route('logout.confirm') }}" class="text-lg transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
     </div>
 

@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Cart;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
-use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
-use PayPalCheckoutSdk\Core\PayPalHttpClient;
-use PayPalCheckoutSdk\Core\SandboxEnvironment;
-use PayPalCheckoutSdk\Core\ProductionEnvironment;
+
 
 class PurchaseController extends Controller
 {
@@ -27,7 +25,7 @@ class PurchaseController extends Controller
         'book_id' => 'required|exists:books,id',
         'quantity' => 'required|integer|min:1',
         'payment_method' => 'required|in:card,paypal',
-        'address' => 'required|string', // Add address validation
+        'address' => 'required|string', 
     ]);
 
     $book = Book::findOrFail($request->book_id);
@@ -129,9 +127,28 @@ public function storeAll(Request $request)
     
     $purchase->update(['total_price' => $totalPrice]);
 
+    $cart = Cart::where('user_id', $user->id)->first();
+    if ($cart) {
+        $cart->cartItems()->delete();
+    }
+
     return $this->processStripePayment($purchase, $totalPrice);
 }
 
 
+public function indexPurchase() 
+{
+    $purchases = Purchase::with(['books:id,titulo', 'user:id,username'])->get();
+    return view('purchaseAdminView', compact('purchases'));
+}
+
+public function deletePurchase($id)
+{
+    $purchase = Purchase::findOrFail($id);
+    
+    $purchase->delete();
+
+    return redirect()->route('admin.purchases')->with('success', 'Compra eliminada correctamente.');
+}
     
 }

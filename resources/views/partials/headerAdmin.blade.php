@@ -23,10 +23,9 @@
         <div class="flex flex-col md:mr-24 text-left">
           <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
           <div class="flex items-center gap-6 mt-3">
-            <div class="flex items-center gap-2">
-              <img src="{{ asset('img/perfil.png') }}" class="w-10 h-auto" alt="Perfil">
-              <span class="text-white text-lg transition-transform duration-300 hover:scale-125">{{ auth()->user()->username }}</span>
-            </div>
+            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+              {{ auth()->user()->username }}
+            </a>
             <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
           </div>
         </div>
@@ -37,10 +36,9 @@
     
     <div x-show="navOpen" class="md:hidden mt-4 flex flex-col gap-4 text-white">
       <hr class="border-white my-2" />
-      <div class="flex items-center gap-2">
-        <img src="{{ asset('img/perfil.png') }}" class="w-8 h-auto" alt="Perfil">
-        <span class="text-lg">{{ auth()->user()->username }}</span>
-      </div>
+      <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+              {{ auth()->user()->username }}
+            </a>
       <a href="{{ route('logout.confirm') }}" class="text-lg transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
     </div>
 

@@ -9,3 +9,6 @@ Route::get('/purchase/failure/{purchase}', [PurchaseController::class, 'failure'
 Route::get('/paypal/checkout/{purchase}', [PurchaseController::class, 'processPayPalPayment']);
 Route::get('/purchase-checkout', [PurchaseController::class, 'checkoutAll'])->name('purchaseCheckoutAll');
 Route::post('/cart/checkout', [PurchaseController::class, 'storeAll'])->name('purchase.storeAll');
+
+Route::get('/admin/purchases', [PurchaseController::class, 'indexPurchase'])->name('admin.purchases');
+Route::delete('/admin/purchases/{id}', [PurchaseController::class, 'deletePurchase'])->name('admin.deletePurchase');

@@ -41,21 +41,22 @@
                 </div>
 
                 @if($errors->any())
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
-@if(session('error'))
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-        {{ session('error') }}
-    </div>
-@endif
-                <form action="{{ route('purchase.store') }}" method="POST" class="space-y-4">
+                @if(session('error'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('purchase.store') }}" method="POST" class="space-y-4" id="purchase-form">
                     @csrf
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
 
@@ -66,29 +67,29 @@
                     </div>
 
                     <div>
-                        <label for="address" class="block mb-2 font-semibold">Dirección de envío:</label>
-                        <textarea id="address" name="address" rows="2" required
+                        <label for="address" class="block mb-2 font-semibold">Dirección de envío y localidad:</label>
+                        <textarea id="address" name="address" rows="2" 
                                   class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
 
                     <input type="hidden" name="payment_method" value="card">
 
                     <div class="flex flex-col">
-                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-green-800">
+                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-green-800" id="purchase-btn">
                             <i class="fas fa-credit-card text-white mr-4 text-xl"></i>
                             Realizar compra
                         </button><br>
-                        
-                        <button name="action" value="cart"
+
+                        <button name="action" value="cart" id="cart-btn"
                                 formaction="{{ route('cart.add') }}"
                                 formmethod="POST"
                                 class="bg-blue-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-blue-800">
                             <i class="fas fa-shopping-cart text-white mr-4 text-xl"></i>
-                                Añadir al carrito
+                            Añadir al carrito
                         </button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     </div>
@@ -112,6 +113,39 @@
 </main>
 
 @include('partials.footer')
+
+<script>
+    
+    const purchaseBtn = document.getElementById('purchase-btn');
+    const cartBtn = document.getElementById('cart-btn');
+    const addressField = document.getElementById('address');
+    const purchaseForm = document.getElementById('purchase-form');
+
+    
+    function toggleAddressValidation(isPurchase) {
+        if (isPurchase) {
+            addressField.required = true;
+        } else {
+            addressField.required = false;
+        }
+    }
+
+   
+    purchaseBtn.addEventListener('click', function() {
+        toggleAddressValidation(true);  
+    });
+
+    cartBtn.addEventListener('click', function() {
+        toggleAddressValidation(false); 
+    });
+
+   
+    purchaseForm.addEventListener('submit', function(event) {
+        if (purchaseBtn.clicked) {
+            toggleAddressValidation(true); 
+        }
+    });
+</script>
 
 </body>
 </html>

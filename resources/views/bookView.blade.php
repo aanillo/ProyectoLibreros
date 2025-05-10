@@ -107,7 +107,7 @@
     <div class="p-4 border border-gray-300 rounded bg-gray-100 text-black text-lg relative">
         <p class="mb-2"><strong>{{ $comment->user->username ?? 'Anónimo' }}</strong> comentó:</p>
         <p class="italic">"{{ $comment->comment }}"</p>
-        <p class="text-sm">Publicado el {{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
+        <p class="text-sm">{{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
 
         @auth
             @if (Auth::id() === $comment->user_id)

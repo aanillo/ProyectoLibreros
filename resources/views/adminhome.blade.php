@@ -15,7 +15,7 @@
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-36">
         
-    <section class="flex-grow flex flex-row items-center gap-16">
+    <section class="flex-grow flex flex-row items-center gap-8">
  
         <div class="flex-grow flex flex-col items-center text-center">
             <h1 class="text-3xl mb-8 font-bold">USUARIOS</h1>
@@ -44,6 +44,13 @@
             <h1 class="text-3xl mb-8 font-bold">COMENTARIOS</h1>
             <a href="{{ route('admin.comments') }}" class="w-52 h-52 flex items-center justify-center text-8xl mb-8 border-2 border-solid border-gray-800 rounded-lg p-4 hover:bg-gray-200">
             <i class="fas fa-comment"></i> 
+            </a>
+        </div>
+
+        <div class="flex-grow flex flex-col items-center text-center">
+            <h1 class="text-3xl mb-8 font-bold">COMPRAS</h1>
+            <a href="{{ route('admin.purchases') }}" class="w-52 h-52 flex items-center justify-center text-8xl mb-8 border-2 border-solid border-gray-800 rounded-lg p-4 hover:bg-gray-200">
+            <i class="fas fa-credit-card"></i> 
             </a>
         </div>
         </section>
