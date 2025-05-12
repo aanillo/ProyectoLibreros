@@ -74,7 +74,7 @@
                 </thead>
                 <tbody>
                     <template x-for="book in paginatedBooks" :key="book.id">
-                        <tr class="border-b text-black text-lg">
+                        <tr class="border-b text-black text-lg bg-amber-100">
                             <td class="px-4 py-2 font-bold" x-text="book.id"></td>
                             <td class="px-4 py-2 font-bold" x-text="book.titulo"></td>
                             <td class="px-4 py-2 truncate overflow-hidden whitespace-nowrap max-w-[350px]" x-text="book.imagen"></td>

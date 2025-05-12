@@ -64,9 +64,9 @@
                 </thead>
                 <tbody>
                     <template x-for="comment in paginatedComments" :key="comment.id">
-                        <tr class="border-b text-black text-lg">
+                        <tr class="border-b text-black text-lg bg-amber-100">
                             <td class="px-4 py-2 font-bold" x-text="comment.id"></td>
-                            <td class="px-4 py-2" x-text="comment.comment"></td>
+                            <td class="px-4 py-2 font-bold" x-text="comment.comment"></td>
                             <td class="px-4 py-2" x-text="comment.publish_date"></td>
                             <td class="px-4 py-2" x-text="comment.user.username"></td>
                             <td class="px-4 py-2" x-text="comment.book.titulo"></td>

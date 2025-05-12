@@ -26,13 +26,13 @@
 
         @foreach ($cart->cartItems as $item)
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-md shadow">
-                <div class="flex items-center gap-4">
-                    <img src="{{ $item->book->imagen }}" alt="{{ $item->book->titulo }}" class="w-24 h-32 object-cover rounded shadow">
+                <div class="w-[90%] flex items-center gap-4">
+                    <img src="{{ $item->book->imagen }}" alt="{{ $item->book->titulo }}" class="w-24 h-42 object-cover rounded shadow">
                     <div>
                         <h2 class="text-xl font-semibold text-[#322411]">{{ $item->book->titulo }}</h2>
-                        <p>Cantidad: {{ $item->quantity }}</p>
-                        <p>Precio unitario: {{ number_format($item->book->precio, 2) }} €</p>
-                        <p class="font-bold">Subtotal: {{ number_format($item->book->precio * $item->quantity, 2) }} €</p>
+                        <p class="text-lg">Cantidad: {{ $item->quantity }}</p>
+                        <p class="text-lg">Precio unitario: {{ number_format($item->book->precio, 2) }} €</p>
+                        <p class="font-bold text-lg">Subtotal: {{ number_format($item->book->precio * $item->quantity, 2) }} €</p>
                     </div>
                 </div>
 

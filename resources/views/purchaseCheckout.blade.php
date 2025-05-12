@@ -26,14 +26,15 @@
         <div class="flex flex-col md:flex-row gap-6 bg-amber-200 shadow-lg rounded-xl p-6 md:p-10">
 
             <div class="flex flex-col md:w-1/2 text-center items-center md:items-start">
-                <h2 class="text-2xl font-bold text-[#322411] mb-4">{{ $book->titulo }}</h2>
+                <h2 class="text-4xl font-bold text-[#322411] mb-12">{{ $book->titulo }}</h2>
                 <img src="{{ $book->imagen }}" alt="{{ $book->titulo }}" 
-                     class="max-w-md max-h-[400px] md:max-w-md rounded-lg shadow-md object-cover mb-4">
+                     class="w-80 md:max-w-md rounded-lg shadow-md object-cover mb-4">
             </div>
 
             <div class="flex flex-col md:w-1/2 space-y-4">
-                <div class="text-xl font-semibold text-[#322411]">
+                <div class="flex flex-col space-y-4 text-xl font-semibold text-[#322411]">
                     <p><strong>Usuario:</strong> {{ auth()->user()->username }}</p>
+                    <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
                 </div>
 
                 <div class="text-xl font-semibold text-[#322411]">
@@ -66,16 +67,33 @@
                                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label for="address" class="block mb-2 font-semibold">Dirección de envío y localidad:</label>
-                        <textarea id="address" name="address" rows="2" 
-                                  class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <label for="direccion" class="block mb-2 font-semibold">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="provincia" class="block mb-2 font-semibold">Provincia:</label>
+                        <input type="text" id="provincia" name="provincia" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="municipio" class="block mb-2 font-semibold">Municipio:</label>
+                        <input type="text" id="municipio" name="municipio" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="codigo_postal" class="block mb-2 font-semibold">Código Postal:</label>
+                        <input type="text" id="codigo_postal" name="codigo_postal" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
                     </div>
 
                     <input type="hidden" name="payment_method" value="card">
 
                     <div class="flex flex-col">
-                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-green-800" id="purchase-btn">
+                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md mt-8 font-semibold hover:bg-green-800" id="purchase-btn">
                             <i class="fas fa-credit-card text-white mr-4 text-xl"></i>
                             Realizar compra
                         </button><br>

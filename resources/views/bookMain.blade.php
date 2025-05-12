@@ -19,7 +19,7 @@
 @endauth
 
 <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBROS</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Realiza tu búsqueda según tipo o género</h2>
 
@@ -37,7 +37,7 @@
         </ul>
     </div>
 
-    <div class="max-w-4xl mx-auto mt-8 mb-24 px-4 w-full"
+    <div class="max-w-6xl mx-auto mt-8 mb-16 px-4 w-full"
          x-data="{
              currentPage: 1,
              booksPerPage: 15,
@@ -88,9 +88,9 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="filteredBooks.length > 0">
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
-                     class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition">
-                    <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-56 object-cover rounded-md">
-                    <h2 class="text-l font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
+                     class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300">
+                    <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
+                    <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
                 </div>
             </template>
         </div>
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <div class="flex items-center gap-4 mb-16 mt-8">
+    <div class="flex items-center gap-4 mb-16">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth
             <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>

@@ -41,7 +41,7 @@
           baseUrl: '{{ url('writers/autor') }}/'
       }">
       
-    <div class="max-w-4xl mx-auto mb-12 px-4 w-full">
+    <div class="max-w-4xl mx-auto mb-6 px-4 w-full">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTORES</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Consulta información sobre tus autores favoritos y sus mejores obras</h2>
     </div>
@@ -61,8 +61,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="autor in paginatedAuthors" :key="autor.id">
                 <div @click="window.location.href = baseUrl + autor.id" 
-                    class="bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden flex flex-col items-center p-4 text-center hover:-translate-y-1">
-                    <img :src="autor.imagen" :alt="autor.nombre" class="w-32 h-32 object-cover rounded-full mb-4">
+                    class="cursor-pointer bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden flex flex-col items-center p-4 text-center hover:-translate-y-1">
+                    <img :src="autor.imagen" :alt="autor.nombre" class="w-48 h-48 object-cover rounded-full mb-4">
                     <h3 class="text-lg font-semibold text-[#322411]" x-text="autor.nombre"></h3>
                 </div>
             </template>

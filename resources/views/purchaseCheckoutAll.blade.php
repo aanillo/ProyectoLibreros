@@ -25,16 +25,18 @@
         <div class="flex flex-col bg-amber-200 shadow-lg rounded-xl p-6 md:p-10">
 
             @foreach ($cart->cartItems as $item)
-                <div class="flex flex-col md:flex-row gap-8 mb-4 bg-white p-4 rounded-lg shadow">
+                <div class="w-[90%] mx-auto flex flex-col md:flex-row gap-8 mb-4 bg-white p-6 rounded-lg shadow">
                     <div class="flex flex-row gap-4 md:w-1/2 items-center md:items-start">
-                        <h2 class="text-xl font-bold text-[#322411] mb-4 text-center">{{ $item->book->titulo }}</h2>
-                        <img src="{{ $item->book->imagen }}" alt="{{ $item->book->titulo }}" class="max-w-md max-h-[150px] rounded-lg shadow-md object-cover mb-4">
+                        <img src="{{ $item->book->imagen }}" alt="{{ $item->book->titulo }}" class="w-24 rounded-lg shadow-md object-cover">
                     </div>
 
                     <div class="flex flex-col md:w-1/2 space-y-4">
-                        <p><strong>Precio unitario:</strong> {{ number_format($item->book->precio, 2) }}€</p>
-                        <p><strong>Cantidad:</strong> {{ $item->quantity }}</p>
-                        <p><strong>Subtotal:</strong> {{ number_format($item->book->precio * $item->quantity, 2) }}€</p>
+                        <h2 class="text-2xl font-bold text-[#322411] mb-4">{{ $item->book->titulo }}</h2>
+                        <p class="text-lg"><strong>Precio unitario:</strong> {{ number_format($item->book->precio, 2) }}€</p>
+                        <p class="text-lg"><strong>Cantidad:</strong> {{ $item->quantity }}</p>
+                    </div>
+                    <div class="flex flex-col md:w-1/2 space-y-4 justify-center items-center">
+                        <p class="text-lg"><strong>Subtotal:</strong><br> {{ number_format($item->book->precio * $item->quantity, 2) }}€</p>
                     </div>
                 </div>
             @endforeach
@@ -69,11 +71,34 @@
                         <input type="hidden" name="quantities[]" value="{{ $item->quantity }}">
                     @endforeach
 
-                    <div>
-                        <label for="address" class="block mb-2 font-semibold">Dirección de envío y localidad:</label>
-                        <textarea id="address" name="address" rows="2" required
-                                  class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    <div class="flex flex-row gap-52">
+                        <p class="text-xl"><strong>Usuario:</strong> {{ auth()->user()->username }}</p>
+                        <p class="text-xl"><strong>Email:</strong> {{ auth()->user()->email }}</p>
                     </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="direccion" class="block mb-2 font-semibold">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="provincia" class="block mb-2 font-semibold">Provincia:</label>
+                        <input type="text" id="provincia" name="provincia" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="municipio" class="block mb-2 font-semibold">Municipio:</label>
+                        <input type="text" id="municipio" name="municipio" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="codigo_postal" class="block mb-2 font-semibold">Código Postal:</label>
+                        <input type="text" id="codigo_postal" name="codigo_postal" required
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
 
                     <input type="hidden" name="payment_method" value="card">
 

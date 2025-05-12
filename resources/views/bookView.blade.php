@@ -24,11 +24,11 @@
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $book->titulo }}</h2>
 
         
-        <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center items-start p-4 mt-8 mb-12">
+        <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center bg-amber-100 items-start p-4 mt-8 mb-12">
             
             <div class="flex-shrink-0">
                 <img src="{{ $book->imagen }}" alt="{{ $book->titulo }}" 
-                     class="max-w-md max-h-[400px] w-full object-cover rounded-md shadow-md">
+                     class="w-80 object-cover rounded-md shadow-md">
             </div>
 
             <div class="flex flex-col justify-start max-w-md">
@@ -53,11 +53,11 @@
         </div>
         
         <div class="flex flex-row items-center justify-center gap-32">
-        <div x-data="{ valoracion: {{ isset($book->valoracion) ? $book->valoracion : 0 }} }" class="mt-6 flex flex-col items-center space-y-4">
-            <strong>Valora este libro:</strong>
+        <div x-data="{ valoracion: {{ isset($book->valoracion) ? $book->valoracion : 0 }} }" class="mt-8 flex flex-col items-center space-y-4">
+            <strong class="mb-4">Valora este libro:</strong>
             <div class="flex space-x-1">
                 <template x-for="star in 5" :key="star">
-                    <i class="fas fa-star text-yellow-300 cursor-pointer text-2xl"
+                    <i class="fas fa-star text-yellow-300 cursor-pointer text-4xl mb-4"
                     @click="valoracion = star"
                     :class="valoracion >= star ? 'text-yellow-500' : 'text-gray-300'"></i>
                 </template>
@@ -77,7 +77,7 @@
                   required></textarea>
                   @error('comment')
     <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
-@enderror
+    @enderror
         <input type="hidden" name="book_id" value="{{ $book->id }}">
         <div class="flex justify-center">
             <button class="w-60 bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700">
@@ -104,10 +104,12 @@
 
             <div x-show="open" x-transition class="mt-4 space-y-4">
             @forelse ($book->comments as $comment)
-    <div class="p-4 border border-gray-300 rounded bg-gray-100 text-black text-lg relative">
-        <p class="mb-2"><strong>{{ $comment->user->username ?? 'Anónimo' }}</strong> comentó:</p>
-        <p class="italic">"{{ $comment->comment }}"</p>
-        <p class="text-sm">{{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
+        <div class="p-4 border border-gray-300 rounded bg-amber-100 text-black text-lg relative">
+        <p class="mb-2"><strong>{{ $comment->user->username ?? 'Anónimo' }}:</strong></p>
+        <div class="p-4 border border-gray-300 rounded bg-white text-black text-lg relative">
+            <p class="italic">"{{ $comment->comment }}"</p>
+            <p class="text-sm">{{ \Carbon\Carbon::parse($comment->publish_date)->format('d/m/Y') }}</p>
+        </div>
 
         @auth
             @if (Auth::id() === $comment->user_id)
@@ -131,7 +133,7 @@
     </div>
 
    <div class="flex flex-row items-center gap-16">
-    <div class="flex items-center gap-4 mb-16 mt-16">
+        <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver a Libros:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>

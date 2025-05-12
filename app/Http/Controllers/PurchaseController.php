@@ -25,17 +25,24 @@ class PurchaseController extends Controller
         'book_id' => 'required|exists:books,id',
         'quantity' => 'required|integer|min:1',
         'payment_method' => 'required|in:card,paypal',
-        'address' => 'required|string', 
+        'direccion' => 'required|string',
+        'provincia' => 'required|string',
+        'municipio' => 'required|string',
+        'codigo_postal' => 'required|string',
     ]);
 
     $book = Book::findOrFail($request->book_id);
     $user = Auth::user();
     $totalPrice = $book->precio * $request->quantity;
+    $fullAddress = $request->direccion . ', ' .
+                   $request->municipio . ', ' .
+                   $request->provincia . ', ' .
+                   $request->codigo_postal;
 
     $purchase = Purchase::create([
         'user_id' => $user->id,
         'total_price' => $totalPrice,
-        'address' => $request->address, 
+        'address' => $fullAddress, 
     ]);
 
     $purchase->books()->attach($book->id, [
@@ -96,9 +103,12 @@ public function checkoutAll(Request $request)
 
 public function storeAll(Request $request)
 {
-    $request->validate([
-        'address' => 'required|string',
-        'payment_method' => 'required|in:card,paypal',
+     $request->validate([
+        'direccion' => 'required|string',
+        'provincia' => 'required|string',
+        'municipio' => 'required|string',
+        'codigo_postal' => 'required|string',
+        'payment_method' => 'required|in:card',
         'book_ids' => 'required|array',
         'quantities' => 'required|array',
         'book_ids.*' => 'exists:books,id',
@@ -107,16 +117,26 @@ public function storeAll(Request $request)
 
     $user = Auth::user();
     $totalPrice = 0;
+
+  
+    $fullAddress = $request->direccion . ', ' .
+                   $request->municipio . ', ' .
+                   $request->provincia . ', ' .
+                   $request->codigo_postal;
+
+    
     $purchase = Purchase::create([
         'user_id' => $user->id,
         'total_price' => 0, 
-        'address' => $request->address,
+        'address' => $fullAddress,
     ]);
 
+    
     foreach ($request->book_ids as $index => $bookId) {
         $book = Book::findOrFail($bookId);
         $quantity = $request->quantities[$index];
-        $totalPrice += $book->precio * $quantity;
+        $subtotal = $book->precio * $quantity;
+        $totalPrice += $subtotal;
 
         $purchase->books()->attach($book->id, [
             'quantity' => $quantity,

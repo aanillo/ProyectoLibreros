@@ -22,26 +22,28 @@
 
         <section class="w-full text-center mb-8">
             <h3 class="text-2xl font-semibold mb-4">Libros</h3>
-            <p class="mb-4">Disfruta de nuestro amplio catálogo de libros, podrás buscar por géneros y por autores.</p>
+            <p class="mb-4 text-lg">Disfruta de nuestro amplio catálogo de libros, podrás buscar por géneros y por autores.</p>
             
             <div class="flex flex-wrap justify-center gap-4">
                 @foreach ($randomBooks as $book)
-                    <div class="flex flex-col items-center w-32">
-                        <img src="{{ $book->imagen }}" alt="Imagen libro" class="w-32 h-50 object-cover rounded-lg shadow-md">
-                        <p class="mt-2 text-sm font-medium">{{ $book->titulo }}</p>
+                    <div class="flex flex-col items-center w-32 h-72">
+                        <div class="w-32 h-48"> 
+                            <img src="{{ $book->imagen }}" alt="Imagen libro" class="w-full h-full object-cover rounded-lg shadow-md">
+                        </div>
+                    <p class="mt-2 text-l text-center">{{ $book->titulo }}</p>
                     </div>
                 @endforeach
             </div>
-            <hr class="mt-8 border-[#F5D074] w-3/4 border-2 mx-auto">
+            <hr class="mt-4 border-[#F5D074] w-3/4 border-2 mx-auto">
         </section>
 
         <section class="w-full text-center">
             <h3 class="text-2xl font-semibold mb-4">Autores</h3>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-auto max-w-5xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto max-w-5xl">
                 @foreach ($randomWriters as $writer)
-                    <div class="bg-gray-100 p-3 rounded-lg shadow-md text-black mx-auto">
-                        <p class="font-medium">{{ $writer->nombre }}</p>
+                    <div class="p-3 text-black mx-auto">
+                        <p class="text-lg">{{ $writer->nombre }}</p>
                     </div>
                 @endforeach
             </div>

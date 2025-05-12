@@ -16,7 +16,7 @@
     @include('partials.header')
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
-        <h1 class="text-center text-3xl font-semibold mb-8">Registro</h1>
+        <h1 class="text-center text-3xl font-semibold mb-8">REGISTRO</h1>
 
         <form method="POST" action="{{ route('doRegister') }}"
             class="w-full max-w-2xl min-h-[500px] p-6 bg-amber-200 border-2 border-[#322411] rounded-2xl flex flex-col space-y-4">

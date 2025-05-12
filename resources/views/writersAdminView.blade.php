@@ -74,7 +74,7 @@
         </thead>
         <tbody>
             <template x-for="writer in paginatedWriters" :key="writer.id">
-                <tr class="border-b text-black text-lg">
+                <tr class="border-b text-black text-lg bg-amber-100">
                     <td class="px-4 py-2 font-bold" x-text="writer.id"></td>
                     <td class="px-4 py-2 font-bold" x-text="writer.nombre"></td>
                     <td class="px-4 py-2 truncate overflow-hidden whitespace-nowrap max-w-[350px]" x-text="writer.imagen"></td>
@@ -96,7 +96,7 @@
         </tbody>
     </table>
 
-    <!-- Paginación -->
+    
     <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl" x-show="totalPages > 1">
         <button 
             @click="if (currentPage > 1) currentPage--"

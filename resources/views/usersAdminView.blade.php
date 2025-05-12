@@ -57,7 +57,7 @@
             />
         </div>
 
-        <!-- Tabla -->
+        
         <h2 class="text-2xl text-center font-bold mb-6">Lista de usuarios</h2>
         <table class="min-w-full bg-white border border-gray-200">
             <thead>
@@ -76,7 +76,7 @@
             </thead>
             <tbody>
                 <template x-for="user in paginatedUsers" :key="user.id">
-                    <tr class="border-b text-black text-lg">
+                    <tr class="border-b text-black text-lg bg-amber-100">
                         <td class="px-4 py-2 font-bold" x-text="user.id"></td>
                         <td class="px-4 py-2 font-bold" x-text="user.nombre"></td>
                         <td class="px-4 py-2" x-text="user.apellidos"></td>

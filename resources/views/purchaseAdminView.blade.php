@@ -65,11 +65,11 @@
                 </thead>
                 <tbody>
                     <template x-for="purchase in paginatedPurchases" :key="purchase.id">
-                        <tr class="border-b text-black text-lg">
+                        <tr class="border-b text-black text-lg bg-amber-100">
                             <td class="px-4 py-2 font-bold" x-text="purchase.id"></td>
-                            <td class="px-4 py-2" x-text="purchase.user.username"></td>
+                            <td class="px-4 py-2 font-bold" x-text="purchase.user.username"></td>
                             <td class="px-4 py-2" x-text="purchase.address"></td>
-                            <td class="px-4 py-2" x-text="purchase.total_price"></td>
+                            <td class="px-4 py-2" x-text="purchase.total_price + ' €'"></td>
                             <td class="px-4 py-2">
                                 <ul class="list-disc ml-4" x-html="purchase.books.map(book => `${book.titulo} (x${book.pivot.quantity})`).join('<br>')"></ul>
                             </td>

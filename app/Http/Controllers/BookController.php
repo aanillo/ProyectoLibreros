@@ -15,7 +15,7 @@ class BookController extends Controller
     public function mostrarVistaLibros(Request $request)
 {
     $generos = [
-        'Historia', 'Terror', 'Comedia', 'Filosofía', 'Ciencia Ficción', 
+        'Historia', 'Terror', 'Comedia', 'Filosofía', 'Drama', 
         'Novela', 'Ensayo', 'Poesía', 'Cultura', 'Fantasía', 'Deporte', 'Arte', 
         'Psicología', 'Biografía'
     ];

@@ -23,10 +23,16 @@
         <div class="flex flex-col md:mr-24 text-left">
           <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
           <div class="flex items-center gap-6 mt-3">
-            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}"
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('profile') ? 'text-amber-200 scale-125' : 'text-white' }}">
               {{ auth()->user()->username }}
             </a>
-            <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
+            <a href="{{ route('logout.confirm') }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('logout.confirm') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Cerrar sesión
+          </a>
           </div>
         </div>
       </div>

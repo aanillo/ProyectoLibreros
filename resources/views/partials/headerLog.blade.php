@@ -18,41 +18,64 @@
       <div class="hidden md:flex md:items-center md:gap-8 w-full justify-between">
         <div class="flex flex-col text-left ml-48">
           <a href="{{ route('home') }}" class="text-white">
-            <h1 class="text-3xl md:text-4xl text-white leading-tight">Libreros</h1>
+            <h1 class="text-4xl md:text-5xl text-white leading-tight">Libreros</h1>
           </a>
           <div class="flex gap-12 mt-3">
-            <a href="{{ route('books') }}" class="text-white text-lg md:text-xl transition-transform duration-300 hover:scale-125">Libros</a>
-            <a href="{{ route('writers') }}" class="text-white text-lg md:text-xl transition-transform duration-300 hover:scale-125">Autores</a>
+            <a href="{{ route('books') }}"
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                      {{ request()->routeIs('books') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Libros
+            </a>
+
+            <a href="{{ route('writers') }}"
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                      {{ request()->routeIs('writers') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Autores
+            </a>
+
           </div>
         </div>
 
         
         <div class="flex flex-col md:mr-24 text-left">
-          <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
-          <div class="flex items-center gap-6 mt-3">
-            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
+          <h2 class="text-xl md:text-2xl text-white mb-6">El rincón de los lectores más apasionados</h2>
+          <div class="flex items-center gap-8">
+          <a href="{{ route('profile', ['id' => auth()->user()->id]) }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('profile') ? 'text-amber-200 scale-125' : 'text-white' }}">
               {{ auth()->user()->username }}
-            </a>
-            <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
-            <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Carro</a>
-            <a href="{{ route('logout.confirm') }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">Cerrar sesión</a>
-          </div>
+          </a>
+
+          <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
+
+          <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('cart.index') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Carrito
+          </a>
+
+          <a href="{{ route('logout.confirm') }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('logout.confirm') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Cerrar sesión
+          </a>
+      </div>
         </div>
       </div>
     </div>
 
     
     <div x-show="navOpen" class="md:hidden mt-4 flex flex-col gap-4 text-white">
-      <a href="{{ route('books') }}" class="text-lg transition-transform duration-300 hover:scale-110">Libros</a>
-      <a href="{{ route('writers') }}" class="text-lg transition-transform duration-300 hover:scale-110">Autores</a>
+      <a href="{{ route('books') }}" class="text-xl transition-transform duration-300 hover:scale-110">Libros</a>
+      <a href="{{ route('writers') }}" class="text-xl transition-transform duration-300 hover:scale-110">Autores</a>
       <hr class="border-white my-2" />
         
-      <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-lg transition-transform duration-300 hover:scale-125">
+      <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
                   {{ auth()->user()->username }}
               </a>
-      <a href="#" class="text-lg transition-transform duration-300 hover:scale-110">Historial</a>
-      <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-lg transition-transform duration-300 hover:scale-110">Carro</a>
-      <a href="{{ route('logout.confirm') }}" class="text-lg transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
+      <a href="#" class="text-xl transition-transform duration-300 hover:scale-110">Historial</a>
+      <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}" class="text-xl transition-transform duration-300 hover:scale-110">Carro</a>
+      <a href="{{ route('logout.confirm') }}" class="text-xl transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
     </div>
 
   </div>

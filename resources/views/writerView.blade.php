@@ -23,12 +23,12 @@
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTOR</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $writer->nombre }}</h2>
         
-        <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center items-start p-4 mt-8 mb-8">
+        <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center bg-amber-100 items-start p-4 mt-8 mb-8">
             <div class="flex-shrink-0">
                 <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
                     class="max-w-md max-h-[300px] w-90% object-cover rounded-md shadow-md mt-4 mb-4">
             </div>
-            <div class="flex flex-col justify-start max-w-md text-md">
+            <div class="flex flex-col justify-start max-w-md text-lg">
                 <p class="mt-16 mb-8"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
                 <p class="mb-8"><strong>País:</strong> {{ $writer->pais }}</p>
                 <p class="mb-8"><strong>Fecha nacimiento:</strong> {{ \Carbon\Carbon::parse($writer->nacimiento)->format('d-m-Y') }}</p>
@@ -36,8 +36,9 @@
             </div>
         </div>
             
+        </div>
            
-            <div class="max-w-4xl mx-auto mt-12 mb-12 px-4 w-full"
+            <div class="max-w-6xl mx-auto mt-8 mb-12 px-4 w-full"
      x-data="{
          currentPage: 1,
          booksPerPage: 15,
@@ -62,8 +63,8 @@
         <template x-for="libro in paginatedBooks" :key="libro.id">
             <div @click="window.location.href = baseUrl + libro.id"
                  class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition">
-                <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-56 object-cover rounded-md">
-                <h2 class="text-l font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
+                <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
+                <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
             </div>
         </template>
     </div>
@@ -91,7 +92,7 @@
     </div>
 </div>
 </div>
-</div>
+
 
 <div class="flex flex-row items-center gap-16">
     <div class="flex items-center gap-4 mb-16 mt-16">

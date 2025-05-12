@@ -53,10 +53,21 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-4 mb-8 mt-8">
+        <div class="flex flex-row items-center gap-16">
+        <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver atrás:</h3>
-            <a href="{{ route('home') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
+            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>
+
+        <div class="flex items-center gap-4 mb-16 mt-16">
+            <h3 class="text-lg">Volver a Home:</h3>
+            @auth
+                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            @else
+                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            @endauth
+        </div>
+   </div> 
 
         <img src="{{ asset('img/book2.jpg') }}" class="w-80 h-auto my-6 mb-16" alt="Libro" />
 
