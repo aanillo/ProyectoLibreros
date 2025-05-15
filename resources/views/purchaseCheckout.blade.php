@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
 @auth
     @include('partials.headerLog')
@@ -133,37 +133,37 @@
 @include('partials.footer')
 
 <script>
-    
     const purchaseBtn = document.getElementById('purchase-btn');
     const cartBtn = document.getElementById('cart-btn');
-    const addressField = document.getElementById('address');
     const purchaseForm = document.getElementById('purchase-form');
 
     
-    function toggleAddressValidation(isPurchase) {
-        if (isPurchase) {
-            addressField.required = true;
-        } else {
-            addressField.required = false;
-        }
+    const addressFields = [
+        document.getElementById('direccion'),
+        document.getElementById('provincia'),
+        document.getElementById('municipio'),
+        document.getElementById('codigo_postal'),
+    ];
+
+    
+    function setAddressRequired(isRequired) {
+        addressFields.forEach(field => {
+            if (field) {
+                field.required = isRequired;
+            }
+        });
     }
 
    
+    setAddressRequired(false);
+
+    
     purchaseBtn.addEventListener('click', function() {
-        toggleAddressValidation(true);  
+        setAddressRequired(true);
     });
 
+    
     cartBtn.addEventListener('click', function() {
-        toggleAddressValidation(false); 
-    });
-
-   
-    purchaseForm.addEventListener('submit', function(event) {
-        if (purchaseBtn.clicked) {
-            toggleAddressValidation(true); 
-        }
+        setAddressRequired(false);
     });
 </script>
-
-</body>
-</html>

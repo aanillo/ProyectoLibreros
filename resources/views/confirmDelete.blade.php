@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../public/img/LogoInicial.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
     @include('partials.headerLog')
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-64">

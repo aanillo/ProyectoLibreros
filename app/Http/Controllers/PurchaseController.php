@@ -34,9 +34,9 @@ class PurchaseController extends Controller
     $book = Book::findOrFail($request->book_id);
     $user = Auth::user();
     $totalPrice = $book->precio * $request->quantity;
-    $fullAddress = $request->direccion . ', ' .
-                   $request->municipio . ', ' .
-                   $request->provincia . ', ' .
+    $fullAddress = $request->direccion . ' - ' .
+                   $request->municipio . ' - ' .
+                   $request->provincia . ' - ' .
                    $request->codigo_postal;
 
     $purchase = Purchase::create([

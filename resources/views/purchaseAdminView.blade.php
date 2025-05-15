@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
     @include('partials.headerAdmin')
 
@@ -74,7 +74,7 @@
                                 <ul class="list-disc ml-4" x-html="purchase.books.map(book => `${book.titulo} (x${book.pivot.quantity})`).join('<br>')"></ul>
                             </td>
                             <td class="px-4 py-2">
-                                <form :action="baseUrl + '/comments/' + comment.id" method="POST" class="inline">
+                                <form :action="baseUrl + '/purchases/' + purchase.id" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:underline font-bold" onclick="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">Eliminar</button>

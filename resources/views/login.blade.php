@@ -11,7 +11,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
     @include('partials.header')
 
@@ -33,14 +33,19 @@
             @error("email") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
             <label for="password" class="block w-full text-center">
-                <span class="block text-lg font-medium">Contraseña:</span>
-                <div class="relative w-full">
-                    <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="password" name="password" id="password"
-                        class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-0.5">
-                </div>
-            </label>
-            @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+            <span class="block text-lg font-medium">Contraseña:</span>
+            <div x-data="{ show: false }" class="relative w-full">
+                <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+                <input :type="show ? 'text' : 'password'" name="password" id="password"
+                    class="w-full pl-10 p-2 border-2 border-solid border-black rounded-md mt-0.5" />
+
+                <button type="button" @click="show = !show"
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-sm">
+                    <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </button>
+            </div>
+        </label>
+                    @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
             <div class="flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-2 sm:space-y-0 mt-4">
                 <button

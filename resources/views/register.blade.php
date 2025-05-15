@@ -11,7 +11,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
     @include('partials.header')
 
@@ -149,29 +149,5 @@
     @include('partials.footer')
 
 </body>
-
-<!--
-<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
-
-<script>
-    function initAutocomplete() {
-        var input = document.getElementById('localidad');
-        var options = {
-            types: ['geocode'], 
-            componentRestrictions: { country: 'es' }
-        };
-        var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-        autocomplete.addListener('place_changed', function() {
-            var place = autocomplete.getPlace();
-            console.log('Ubicación seleccionada:', place);
-        });
-
-        input.addEventListener('input', function() {
-            console.log('Input detectado:', input.value);
-        });
-    }
-</script>
--->
 
 </html>

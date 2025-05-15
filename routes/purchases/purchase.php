@@ -11,4 +11,4 @@ Route::get('/purchase-checkout', [PurchaseController::class, 'checkoutAll'])->na
 Route::post('/cart/checkout', [PurchaseController::class, 'storeAll'])->name('purchase.storeAll');
 
 Route::get('/admin/purchases', [PurchaseController::class, 'indexPurchase'])->name('admin.purchases');
-Route::delete('/admin/purchases/{id}', [PurchaseController::class, 'deletePurchase'])->name('admin.deletePurchase');
+Route::delete('/admin/purchases/{purchase}', [PurchaseController::class, 'deletePurchase'])->name('admin.deletePurchase');

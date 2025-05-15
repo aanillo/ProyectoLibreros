@@ -1,4 +1,4 @@
-<footer class="bg-[#322411] text-white font-[Brawler] p-5">
+<footer class="bg-[#322411] text-white font-[Georgia] p-5">
   <div class="flex flex-col md:flex-row justify-between items-center w-full gap-8 flex-wrap text-center md:text-left">
 
     <div class="flex-1 min-w-[250px] flex flex-col items-center">

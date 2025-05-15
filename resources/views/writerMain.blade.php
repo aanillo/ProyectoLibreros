@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
 @auth
     @include('partials.headerLog')
@@ -61,7 +61,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="autor in paginatedAuthors" :key="autor.id">
                 <div @click="window.location.href = baseUrl + autor.id" 
-                    class="cursor-pointer bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden flex flex-col items-center p-4 text-center hover:-translate-y-1">
+                    class="cursor-pointer bg-white border border-gray-300 bg-[#F8F3EB] shadow-md rounded-lg overflow-hidden flex flex-col items-center p-4 text-center hover:-translate-y-1">
                     <img :src="autor.imagen" :alt="autor.nombre" class="w-48 h-48 object-cover rounded-full mb-4">
                     <h3 class="text-lg font-semibold text-[#322411]" x-text="autor.nombre"></h3>
                 </div>

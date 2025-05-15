@@ -46,7 +46,11 @@
               {{ auth()->user()->username }}
           </a>
 
-          <a href="#" class="text-white text-xl transition-transform duration-300 hover:scale-125">Historial</a>
+          <a href="{{ route('user.purchases', ['id' => auth()->user()->id]) }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
+                    {{ request()->routeIs('user.purchases') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Historial
+          </a>
 
           <a href="{{ route('cart.index', ['id' => auth()->user()->id]) }}"
             class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 

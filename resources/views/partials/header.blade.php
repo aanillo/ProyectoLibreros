@@ -49,12 +49,12 @@
           <div class="flex gap-12 mt-3">
             <a href="{{ route('login.show') }}" 
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('login.show') ? 'text-amber-200 scale-125' : 'text-white' }}"></a>
-            Login
+                      {{ request()->routeIs('login.show') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Login
             </a>
             <a href="{{ route('register.show') }}"
             class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('register.show') ? 'text-amber-200 scale-125' : 'text-white' }}"></a>
+                      {{ request()->routeIs('register.show') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Registro
             </a>
           </div>

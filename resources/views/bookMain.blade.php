@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="flex flex-col min-h-screen text-white font-[Brawler]">
+<body class="flex flex-col min-h-screen text-white font-[Georgia]">
 
 @auth
     @include('partials.headerLog')
@@ -18,7 +18,7 @@
     @include('partials.header')
 @endauth
 
-<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
+<main class="flex-grow flex flex-col bg-white items-center text-black px-6 mt-56">
     <div class="max-w-6xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBROS</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Realiza tu búsqueda según tipo o género</h2>
@@ -88,7 +88,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="filteredBooks.length > 0">
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
-                     class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300">
+                     class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300 bg-[#F8F3EB]">
                     <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
                     <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
                 </div>

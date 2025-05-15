@@ -404,5 +404,22 @@ public function deleteProfile($id) {
 }
 
 
+public function showPurchases($id) {
+    $user = User::with(['purchases' => function($query) {
+        $query->orderBy('created_at', 'desc'); 
+    }, 'purchases.books'])->findOrFail($id);
+    
+    $purchases = $user->purchases->map(function($purchase) {
+        return [
+            'amount' => $purchase->total_price,
+            'address' => $purchase->address,
+            'date' => $purchase->created_at->format('d/m/Y'),
+            'books' => $purchase->books->pluck('titulo')
+        ];
+    });
+    
+    return view('userPurchases', compact('user', 'purchases'));
+}
+
 
 }

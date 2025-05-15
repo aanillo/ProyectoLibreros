@@ -27,3 +27,5 @@ Route::get('/profile/{id}/editPsw', [UserController::class, 'editProfilePsw'])->
 Route::put('/profile/{id}/psw', [UserController::class, 'updateProfilePsw'])->name('updatePsw');
 Route::get('/profile/{id}/del', [UserController::class, 'deleteShow'])->name('deleteShow');
 Route::delete('/profile/{id}/delProf', [UserController::class, 'deleteProfile'])->name('deleteProfile');
+
+Route::get('/user/{id}/purchases', [UserController::class, 'showPurchases']) -> name('user.purchases');
