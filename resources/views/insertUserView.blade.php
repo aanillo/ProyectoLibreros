@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libreros</title>
-    <link rel="icon" type="image/x-icon" href="../public/img/LogoInicial.jpg">
+    <title>Insertar usuario</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -126,21 +126,21 @@
             </label>
 
     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-        <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700"
+        <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
             type="submit">Insertar Usuario</button>
-        <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700"
+        <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
             type="reset">Cancelar</button>
     </div>
 </form>
 
         <div class="flex items-center gap-4 mb-8 mt-16">
             <h3 class="text-lg">Volver atrás:</h3>
-            <a href="{{ route('admin.users') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Libros</a>
+            <a href="{{ route('admin.users') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Usuarios</a>
         </div>
 
         <div class="flex items-center gap-4 mb-16 mt-8">
             <h3 class="text-lg">Volver a la vista principal:</h3>
-            <a href="{{ route('admin') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
+            <a href="{{ route('admin') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
         </div>
 
     </main>

@@ -23,13 +23,13 @@
           <div class="flex gap-12 mt-3">
             <a href="{{ route('books') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('books') ? 'text-amber-200 scale-125' : 'text-white' }}">
+                      {{ request()->is('books*', 'purchases*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Libros
             </a>
 
             <a href="{{ route('writers') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('writers') ? 'text-amber-200 scale-125' : 'text-white' }}">
+                      {{ request()->is('writers*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Autores
             </a>
 
@@ -86,7 +86,7 @@
 </header>
 
 
-<div class="fixed mt-[135px] w-full bg-amber-200 text-black py-2 flex justify-center items-center">
+<div class="fixed mt-[135px] w-full bg-amber-200 text-black py-2 z-50 flex justify-center items-center">
     <h2 class="text-2xl font-semibold">Bienvenid@ {{ auth()->user()->username }}</h2>
 </div>
 

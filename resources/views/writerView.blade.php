@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros</title>
+    <title>Autor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
@@ -18,7 +18,7 @@
     @include('partials.header')
 @endauth
 
-<main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
+<main class="flex-grow flex flex-col items-center bg-white text-black p-6 mt-56">
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTOR</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $writer->nombre }}</h2>
@@ -26,7 +26,7 @@
         <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center bg-amber-100 items-start p-4 mt-8 mb-8">
             <div class="flex-shrink-0">
                 <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
-                    class="max-w-md max-h-[300px] w-90% object-cover rounded-md shadow-md mt-4 mb-4">
+                    class="w-72 object-cover rounded-md shadow-md mt-4 mb-4">
             </div>
             <div class="flex flex-col justify-start max-w-md text-lg">
                 <p class="mt-16 mb-8"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
@@ -62,7 +62,7 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
         <template x-for="libro in paginatedBooks" :key="libro.id">
             <div @click="window.location.href = baseUrl + libro.id"
-                 class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition">
+                 class="cursor-pointer bg-[#F8F3EB] p-2 bg-[#F8F3EB] shadow-md rounded-lg hover:-translate-y-1 transition">
                 <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
                 <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
             </div>
@@ -103,9 +103,9 @@
     <div class="flex items-center gap-4 mb-16 mt-16">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth
-            <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
         @else
-            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
         @endauth
     </div>
 </div>

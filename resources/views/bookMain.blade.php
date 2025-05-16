@@ -88,7 +88,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4" x-show="filteredBooks.length > 0">
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
-                     class="cursor-pointer p-2 bg-white shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300 bg-[#F8F3EB]">
+                     class="cursor-pointer p-2 shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300 bg-[#F8F3EB]">
                     <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
                     <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
                 </div>
@@ -121,9 +121,9 @@
     <div class="flex items-center gap-4 mb-16">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth
-            <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
         @else
-            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
         @endauth
     </div>
 </main>

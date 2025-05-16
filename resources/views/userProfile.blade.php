@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libreros</title>
-    <link rel="icon" type="image/x-icon" href="../public/img/LogoInicial.jpg">
+    <title>Perfil</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -41,30 +41,30 @@
         <div class="flex items-center gap-16 mb-8 mt-8">
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Editar perfil:</h3>
-                <a href="{{ route('editProfile', ['id' => $user->id]) }}" class="btnHome bg-blue-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-blue-700">Editar</a>
+                <a href="{{ route('editProfile', ['id' => $user->id]) }}" class="btnHome bg-blue-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-blue-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">Editar</a>
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Cambiar contraseña:</h3>
-                <a href="{{ route('editPsw', ['id' => $user->id]) }}" class="btnHome bg-yellow-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700">Reestablecer</a>
+                <a href="{{ route('editPsw', ['id' => $user->id]) }}" class="btnHome bg-yellow-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">Reestablecer</a>
             </div>
             <div class="flex flex-col items-center">
                 <h3 class="text-lg">Eliminar cuenta:</h3>
-                <a href="{{ route('deleteShow', ['id' => $user->id]) }}" class="btnHome bg-red-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-700">Eliminar</a>
+                <a href="{{ route('deleteShow', ['id' => $user->id]) }}" class="btnHome bg-red-500 text-black font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">Eliminar</a>
             </div>
         </div>
 
         <div class="flex flex-row items-center gap-16">
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver atrás:</h3>
-            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
+            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
         </div>
 
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver a Home:</h3>
             @auth
-                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @else
-                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @endauth
         </div>
    </div> 

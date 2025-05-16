@@ -49,24 +49,24 @@
 
             <div class="flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-2 sm:space-y-0 mt-4">
                 <button
-                    class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700"
+                    class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                     type="submit">Login</button>
                 <button
-                    class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700"
+                    class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                     type="reset">Cancelar</button>
             </div>
 
             <div class="text-center mt-4 space-y-2">
                 <p>¿Aún no estás registrado?</p>
                 <a href="{{ route('register.show') }}"
-                    class="bg-blue-500 text-black font-bold border-2 border-black px-6 py-2 rounded-md hover:bg-blue-700 inline-block">Registrarse</a>
+                    class="bg-blue-500 text-black font-bold border-2 border-black px-6 py-2 rounded-md hover:bg-blue-700 inline-block transform transition-transform duration-1000 ease-in-out hover:scale-110">Registrarse</a>
             </div>
         </form>
 
 
         <div class="flex items-center gap-4 mt-8">
             <h3 class="text-lg">Volver a Home:</h3>
-            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+            <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
         </div>
 
         <img src="{{ asset('img/libros.jpg') }}" class="w-80 h-auto my-6" alt="Libros" />

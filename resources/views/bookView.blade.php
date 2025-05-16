@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros</title>
+    <title>Libro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
@@ -47,7 +47,7 @@
         <div class="justify-center items-center flex flex-row gap-8 mt-16 mb-8">
             <h2 class="text-lg"><strong>Comprar el libro:</strong></h2>
             <a href="{{ route('purchaseCheckout', ['book_id' => $book->id]) }}" 
-       class="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-700">
+       class="bg-green-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">
         Comprar
     </a>
         </div>
@@ -65,7 +65,7 @@
             <form action="{{ route('rateBook', $book->id) }}" method="POST">
                 @csrf
                 <input type="hidden" name="valoracion" x-bind:value="valoracion">
-                <button type="submit" class="bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700">Enviar valoración</button>
+                <button type="submit" class="bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">Enviar valoración</button>
             </form>
         </div>
         <div class="mt-6 flex flex-col items-center space-y-2 w-full max-w-md">
@@ -80,7 +80,7 @@
     @enderror
         <input type="hidden" name="book_id" value="{{ $book->id }}">
         <div class="flex justify-center">
-            <button class="w-60 bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700">
+            <button class="w-60 bg-blue-500 text-black font-bold border-2 border-solid border-black px-6 py-2 rounded-md hover:bg-blue-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">
                 Enviar comentario
             </button>
         </div>
@@ -135,15 +135,15 @@
    <div class="flex flex-row items-center gap-16">
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver a Libros:</h3>
-            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
+            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
         </div>
 
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver a Home:</h3>
             @auth
-                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @else
-                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @endauth
         </div>
    </div> 

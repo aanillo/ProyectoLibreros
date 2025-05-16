@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros</title>
+    <title>Comprar libro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
@@ -93,7 +93,7 @@
                     <input type="hidden" name="payment_method" value="card">
 
                     <div class="flex flex-col">
-                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md mt-8 font-semibold hover:bg-green-800" id="purchase-btn">
+                        <button type="submit" class="w-full bg-green-600 text-white text-xl px-6 py-2 rounded-md mt-8 font-semibold hover:bg-green-800 transform transition-transform duration-1000 ease-in-out hover:scale-110" id="purchase-btn">
                             <i class="fas fa-credit-card text-white mr-4 text-xl"></i>
                             Realizar compra
                         </button><br>
@@ -101,7 +101,7 @@
                         <button name="action" value="cart" id="cart-btn"
                                 formaction="{{ route('cart.add') }}"
                                 formmethod="POST"
-                                class="bg-blue-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-blue-800">
+                                class="bg-blue-600 text-white text-xl px-6 py-2 rounded-md font-semibold hover:bg-blue-800 transform transition-transform duration-1000 ease-in-out hover:scale-110">
                             <i class="fas fa-shopping-cart text-white mr-4 text-xl"></i>
                             Añadir al carrito
                         </button>
@@ -115,15 +115,15 @@
     <div class="flex flex-row items-center gap-16">
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver atrás:</h3>
-            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
+            <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
         </div>
 
         <div class="flex items-center gap-4 mb-16 mt-16">
             <h3 class="text-lg">Volver a Home:</h3>
             @auth
-                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @else
-                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Home</a>
+                <a href="{{ url('/') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
             @endauth
         </div>
     </div>

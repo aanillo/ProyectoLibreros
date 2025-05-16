@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libreros</title>
-    <link rel="icon" type="image/x-icon" href="../public/img/LogoInicial.jpg">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoInicial.jpg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -42,7 +42,7 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto max-w-5xl">
                 @foreach ($randomWriters as $writer)
-                    <div class="p-3 text-black mx-auto">
+                    <div class="p-3 text-black mx-auto bg-[#F8F3EB]">
                         <p class="text-lg">{{ $writer->nombre }}</p>
                     </div>
                 @endforeach
