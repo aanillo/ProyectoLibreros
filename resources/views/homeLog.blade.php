@@ -24,13 +24,13 @@
             <h3 class="text-2xl font-semibold mb-4">Libros</h3>
             <p class="mb-4 text-lg">Disfruta de nuestro amplio catálogo de libros, podrás buscar por géneros y por autores.</p>
             
-            <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex flex-wrap justify-center gap-4 max-w-7xl mx-auto">
                 @foreach ($randomBooks as $book)
-                    <div class="flex flex-col items-center w-32 h-72">
-                        <div class="w-32 h-48"> 
+                    <div class="flex flex-col items-center w-46 h-72">
+                        <div class="w-46 h-48"> 
                             <img src="{{ $book->imagen }}" alt="Imagen libro" class="w-full h-full object-cover rounded-lg shadow-md">
                         </div>
-                    <p class="mt-2 text-l text-center">{{ $book->titulo }}</p>
+                    <p class="mt-2 text-l text-center w-32">{{ $book->titulo }}</p>
                     </div>
                 @endforeach
             </div>
@@ -40,7 +40,7 @@
         <section class="w-full text-center">
             <h3 class="text-2xl font-semibold mb-4">Autores</h3>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mx-auto max-w-5xl">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
                 @foreach ($randomWriters as $writer)
                     <div class="p-3 text-black mx-auto bg-[#F8F3EB]">
                         <p class="text-lg">{{ $writer->nombre }}</p>

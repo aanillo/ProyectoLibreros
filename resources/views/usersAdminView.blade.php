@@ -132,7 +132,6 @@
     </div>
 </section>
 
-
         <div class="flex items-center gap-4 mb-16 mt-8">
             <h3 class="text-lg">Volver a la vista principal:</h3>
             <a href="{{ route('admin') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>

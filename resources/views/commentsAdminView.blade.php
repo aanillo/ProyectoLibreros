@@ -37,6 +37,15 @@
             get totalPages() {
                 return Math.max(1, Math.ceil(this.filteredComments.length / this.commentsPerPage));
             },
+
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}-${month}-${year}`;
+            },
+
             comments: @js($comments),
             baseUrl: '{{ url('comments/admin') }}'
         }">
@@ -51,12 +60,12 @@
 
             <h2 class="text-2xl text-center font-bold mb-6">Lista de comentarios</h2>
 
-            <table class="min-w-full bg-white border border-gray-200">
+            <table class="w-[90%] mx-auto bg-white border border-gray-200">
                 <thead>
                     <tr class="bg-[#322411] text-left text-lg text-white">
                         <th class="px-4 py-2">ID</th>
                         <th class="px-4 py-2">Comentario</th>
-                        <th class="px-4 py-2">Fecha</th>
+                        <th class="px-4 py-2 min-w-[130px]">Fecha</th>
                         <th class="px-4 py-2">Usuario</th>
                         <th class="px-4 py-2">Libro</th>
                         <th class="px-4 py-2">Acciones</th>
@@ -67,7 +76,7 @@
                         <tr class="border-b text-black text-lg bg-amber-100">
                             <td class="px-4 py-2 font-bold" x-text="comment.id"></td>
                             <td class="px-4 py-2 font-bold" x-text="comment.comment"></td>
-                            <td class="px-4 py-2" x-text="comment.publish_date"></td>
+                            <td class="px-4 py-2" x-text="formatDate(comment.publish_date)"></td>
                             <td class="px-4 py-2" x-text="comment.user.username"></td>
                             <td class="px-4 py-2" x-text="comment.book.titulo"></td>
                             <td class="px-4 py-2">

@@ -18,13 +18,13 @@
     <h1 class="text-center text-3xl font-semibold mb-8">Insertar Autor</h1>
 
     <form method="POST" action="{{ route('doInsertWriter') }}"
-        class="w-full max-w-2xl min-h-[500px] p-6 bg-amber-200 border-2 border-[#322411] rounded-2xl flex flex-col space-y-4">
+        class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-4 w-full max-w-4xl min-h-[500px] px-12 py-6 bg-amber-200 border-2 border-[#322411] rounded-2xl">
         @csrf
 
         
-        <label for="nombre" class="w-full text-center">
+        <label for="nombre" class="text-left">
             <span class="block text-lg font-medium">Nombre:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="nombre" id="nombre"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -34,9 +34,9 @@
         @error("nombre") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
        
-        <label for="imagen" class="w-full text-center">
+        <label for="imagen" class="text-left">
             <span class="block text-lg font-medium">URL de la imagen:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-image absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="url" name="imagen" id="imagen"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -46,9 +46,9 @@
         @error("imagen") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
         
-        <label for="nombre_completo" class="w-full text-center">
+        <label for="nombre_completo" class="text-left">
             <span class="block text-lg font-medium">Nombre completo:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-user-tie absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="nombre_completo" id="nombre_completo"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -58,9 +58,9 @@
         @error("nombre_completo") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
         
-        <label for="pais" class="w-full text-center">
+        <label for="pais" class="text-left">
             <span class="block text-lg font-medium">País:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-flag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="pais" id="pais"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -70,9 +70,9 @@
         @error("pais") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
         
-        <label for="nacimiento" class="w-full text-center">
+        <label for="nacimiento" class="text-left">
             <span class="block text-lg font-medium">Fecha de nacimiento:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="date" name="nacimiento" id="nacimiento"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1">
@@ -81,9 +81,9 @@
         @error("nacimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
        
-        <label for="fallecimiento" class="w-full text-center">
+        <label for="fallecimiento" class="text-left">
             <span class="block text-lg font-medium">Fecha de fallecimiento:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-calendar-times absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="date" name="fallecimiento" id="fallecimiento"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1">
@@ -92,10 +92,10 @@
         @error("fallecimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
         
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-            <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
+        <div class="col-span-full flex flex-col sm:flex-row justify-center items-center gap-32 mt-4">
+            <button class="bg-green-500 font-bold w-72 text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                 type="submit">Insertar Autor</button>
-            <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
+            <button class="bg-red-500 font-bold w-72 text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                 type="reset">Cancelar</button>
         </div>
     </form>

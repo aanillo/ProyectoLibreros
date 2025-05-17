@@ -23,7 +23,7 @@
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBROS</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Realiza tu búsqueda según tipo o género</h2>
 
-        <ul class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <ul class="grid grid-cols-2 md:grid-cols-5 gap-4 w-full">
             <li class="group bg-amber-200 p-2 shadow hover:shadow-lg transition border-2 border-solid border-[#322411] flex items-center justify-center w-[160px] 
                 hover:bg-[#322411] hover:border-amber-200">
                 <a href="{{ route('books', ['genero' => 'Todos']) }}" class="text-lg text-[#322411] text-center font-bold group-hover:text-amber-200">Todos</a>

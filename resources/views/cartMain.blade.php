@@ -23,7 +23,7 @@
 <h2 class="text-xl mt-2 text-center mb-6">Carrito de la compra de {{ auth()->user()->username }}</h2>
 
 @if ($cart && $cart->cartItems->count() > 0)
-    <div class="w-[130%] max-w-5xl bg-amber-200 rounded-xl shadow-lg p-6 space-y-6">
+    <div class="w-[130%] max-w-5xl bg-amber-200 rounded-xl shadow-lg p-6 px-12 py-8 space-y-6">
 
         @foreach ($cart->cartItems as $item)
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-md shadow">

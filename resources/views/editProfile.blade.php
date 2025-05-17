@@ -20,84 +20,86 @@
         <h2 class="text-center text-2xl font-semibold mb-6">{{ $user->nombre }} {{ $user->apellidos }}</h2>
 
         <form method="POST" action="{{ route('updateProfile', $user->id) }}"
-            class="w-full max-w-2xl min-h-[500px] p-6 bg-amber-200 border-2 border-[#322411] rounded-2xl flex flex-col space-y-4">
-            @csrf
-            @method('PUT')
+    class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-4 w-full max-w-4xl min-h-[500px] px-12 py-6 bg-amber-200 border-2 border-[#322411] rounded-2xl">
+    @csrf
+    @method('PUT')
 
-            <label for="nombre" class="w-full text-center">
-                <span class="block text-lg font-medium">Nombre:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="text" name="nombre" id="nombre" value="{{ old('nombre', $user->nombre) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
-                        placeholder="Escribe tu nombre">
-                </div>
-            </label>
-            @error("nombre") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="nombre" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Nombre:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="text" name="nombre" id="nombre" value="{{ old('nombre', $user->nombre) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md"
+                placeholder="Escribe tu nombre">
+        </div>
+        @error("nombre") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <label for="apellidos" class="w-full text-center">
-                <span class="block text-lg font-medium">Apellidos:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-user-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $user->apellidos) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
-                        placeholder="Escribe tus apellidos">
-                </div>
-            </label>
-            @error("apellidos") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="apellidos" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Apellidos:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-user-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos', $user->apellidos) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md"
+                placeholder="Escribe tus apellidos">
+        </div>
+        @error("apellidos") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <label for="username" class="w-full text-center">
-                <span class="block text-lg font-medium">Username:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-user-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="text" name="username" id="username" value="{{ old('username', $user->username) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
-                        placeholder="Escribe tu username">
-                </div>
-            </label>
-            @error("username") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="username" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Username:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-user-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="text" name="username" id="username" value="{{ old('username', $user->username) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md"
+                placeholder="Escribe tu username">
+        </div>
+        @error("username") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <label for="email" class="w-full text-center">
-                <span class="block text-lg font-medium">Correo:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
-                        placeholder="Escribe tu correo">
-                </div>
-            </label>
-            @error("email") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="email" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Correo:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md"
+                placeholder="Escribe tu correo">
+        </div>
+        @error("email") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <label for="fecha_nacimiento" class="w-full text-center">
-                <span class="block text-lg font-medium">Fecha de nacimiento:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"
-                        value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1">
-                </div>
-            </label>
-            @error("fecha_nacimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="fecha_nacimiento" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Fecha de nacimiento:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"
+                value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md">
+        </div>
+        @error("fecha_nacimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <label for="localidad" class="w-full text-center">
-                <span class="block text-lg font-medium">Localidad:</span>
-                <div class="relative w-full sm:w-4/5 mx-auto">
-                    <i class="fas fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
-                    <input type="text" name="localidad" id="localidad" value="{{ old('localidad', $user->localidad) }}"
-                        class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
-                        placeholder="Escribe la localidad">
-                </div>
-            </label>
-            @error("localidad") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    <label for="localidad" class="w-full text-left">
+        <span class="block text-lg font-medium mb-1">Localidad:</span>
+        <div class="relative w-full mx-auto">
+            <i class="fas fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
+            <input type="text" name="localidad" id="localidad" value="{{ old('localidad', $user->localidad) }}"
+                class="w-full pl-10 p-2 border-2 border-black rounded-md"
+                placeholder="Escribe la localidad">
+        </div>
+        @error("localidad") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
+    </label>
 
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-                <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
-                    type="submit">Actualizar Usuario</button>
-                <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
-                    type="reset">Cancelar</button>
-            </div>
+    <div class="col-span-full flex flex-col sm:flex-row justify-center items-center gap-32 mt-4">
+        <button
+            class="bg-green-500 font-bold w-72 text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transition-transform duration-300 ease-in-out hover:scale-110"
+            type="submit">Actualizar Usuario</button>
+        <button
+            class="bg-red-500 font-bold w-72 text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
+            type="reset">Cancelar</button>
+    </div>
+</form>
 
-        </form>
 
         <div class="flex flex-row items-center gap-16">
         <div class="flex items-center gap-4 mb-16 mt-16">
@@ -114,8 +116,6 @@
             @endauth
         </div>
    </div> 
-
-        <img src="{{ asset('img/book2.jpg') }}" class="w-80 h-auto my-6 mb-16" alt="Libro" />
         
     </main>
 

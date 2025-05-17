@@ -59,7 +59,7 @@
 
         </div>
     <h2 class="text-2xl text-center font-bold mb-6">Lista de autores</h2>
-    <table class="min-w-full bg-white border border-gray-200">
+    <table class="w-[90%] mx-auto bg-white border border-gray-200">
         <thead>
             <tr class="bg-[#322411] text-left text-lg text-white">
                 <th class="px-4 py-2">ID</th>

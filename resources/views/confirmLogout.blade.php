@@ -9,7 +9,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen text-white font-[Georgia]">
-    @include('partials.headerLog')
+    @if(Auth::check() && Auth::user()->rol === 'admin')
+        @include('partials.headerAdmin')
+    @else
+        @include('partials.headerLog')
+    @endif
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-64">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">¿Seguro que deseas cerrar sesión?</h1>
@@ -20,8 +24,8 @@
             </div>
 
             <div class="flex flex-col items-center">
-                <h3 class="text-lg">Volver a Home:</h3>
-                <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-700 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>
+                <h3 class="text-lg">Volver atrás:</h3>
+                <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
             </div>
         </div>
         <img class="mt-16 mb-16" src="{{ asset('img/LogoInicial.jpg') }}" width="200px" />

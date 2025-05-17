@@ -66,12 +66,29 @@
     
     <div x-show="navOpen" class="md:hidden mt-4 flex flex-col gap-4 text-white">
       <h1 class="text-2xl">Libreros</h1>
-      <a href="{{ route('books') }}" class="text-xl transition-transform duration-300 hover:scale-110">Libros</a>
-      <a href="{{ route('writers') }}" class="text-xl transition-transform duration-300 hover:scale-110">Autores</a>
+      <a href="{{ route('books') }}"
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
+                      {{ request()->routeIs('books') ? 'text-amber-200' : 'text-white' }}">
+              Libros
+            </a>
+
+            <a href="{{ route('writers') }}"
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
+                      {{ request()->routeIs('writers') ? 'text-amber-200' : 'text-white' }}">
+              Autores
+            </a>
       <hr class="border-white my-2" />
       <span class="text-xl">El rincón de los lectores más apasionados</span>
-      <a href="{{ route('login.show') }}" class="text-xl transition-transform duration-300 hover:scale-110">Login</a>
-      <a href="{{ route('register.show') }}" class="text-xl transition-transform duration-300 hover:scale-110">Registro</a>
+      <a href="{{ route('login.show') }}" 
+              class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
+                      {{ request()->routeIs('login.show') ? 'text-amber-200' : 'text-white' }}">
+              Login
+            </a>
+            <a href="{{ route('register.show') }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
+                      {{ request()->routeIs('register.show') ? 'text-amber-200' : 'text-white' }}">
+              Registro
+            </a>
     </div>
 
   </div>

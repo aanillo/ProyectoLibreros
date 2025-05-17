@@ -23,11 +23,6 @@
         <div class="flex flex-col md:mr-24 text-left">
           <h2 class="text-lg md:text-xl text-white mb-1">El rincón de los lectores más apasionados</h2>
           <div class="flex items-center gap-6 mt-3">
-            <a href="{{ route('profile', ['id' => auth()->user()->id]) }}"
-              class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                    {{ request()->routeIs('profile') ? 'text-amber-200 scale-125' : 'text-white' }}">
-              {{ auth()->user()->username }}
-            </a>
             <a href="{{ route('logout.confirm') }}"
             class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
                     {{ request()->routeIs('logout.confirm') ? 'text-amber-200 scale-125' : 'text-white' }}">
@@ -40,12 +35,13 @@
 
 
     
-    <div x-show="navOpen" class="md:hidden mt-4 flex flex-col gap-4 text-white">
+    <div x-show="navOpen" class="md:hidden mt-24 flex flex-col gap-4 text-white">
       <hr class="border-white my-2" />
-      <a href="{{ route('profile', ['id' => auth()->user()->id]) }}" class="text-white text-xl transition-transform duration-300 hover:scale-125">
-              {{ auth()->user()->username }}
-            </a>
-      <a href="{{ route('logout.confirm') }}" class="text-lg transition-transform duration-300 hover:scale-110">Cerrar sesión</a>
+      <a href="{{ route('logout.confirm') }}"
+            class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
+                    {{ request()->routeIs('logout.confirm') ? 'text-amber-200 scale-125' : 'text-white' }}">
+              Cerrar sesión
+          </a>
     </div>
 
   </div>
