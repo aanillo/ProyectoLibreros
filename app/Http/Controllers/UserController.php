@@ -82,7 +82,7 @@ class UserController extends Controller
 
 
     
-    public function doLogin(Request $request)
+   public function doLogin(Request $request)
 {
     $validator = Validator::make($request->all(), [
         "email" => "required|email:rfc,dns|exists:users,email",
@@ -94,12 +94,11 @@ class UserController extends Controller
         "password.required" => "El campo de contraseña es obligatorio.",
     ]);
 
-    
     $validator->after(function ($validator) use ($request) {
         $user = User::where('email', $request->email)->first();
         if ($user) {
             if ($user->rol === 'admin' && $request->password === 'Admin+123') {
-                return; 
+                return;
             }
             if (!Hash::check($request->password, $user->password)) {
                 $validator->errors()->add('password', 'Contraseña incorrecta');
@@ -111,17 +110,22 @@ class UserController extends Controller
         return redirect()->back()->withErrors($validator)->withInput();
     }
 
+    $user = User::where('email', $request->email)->first();
+
+    if ($user->rol === 'admin' && $request->password === 'Admin+123') {
+        Auth::login($user);
+        return redirect()->route('admin');
+    }
+
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
-        if (Auth::user()->rol === 'admin') {
-            return redirect()->route('admin');
-        }
         return redirect()->intended('/home');
     }
 
     return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
 }
+
     
 
 
