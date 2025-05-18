@@ -16,13 +16,13 @@
     <div class="flex-1 min-w-[250px] mt-6 md:mt-0">
       <h3 class="text-xl font-semibold mb-4 underline">Redes sociales</h3>
       <div class="space-y-2">
-        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
+        <a href="https://www.instagram.com/" class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
           <img src="{{ asset('img/ig.png') }}" alt="Icono de Instagram" width="35" height="15"> Instagram
         </a>
-        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
-          <img src="{{ asset('img/twx.png') }}" alt="Icono de X" width="35" height="15"> X
+        <a href="https://x.com/x" class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
+          <img src="{{ asset('img/twx.png') }}" href="" alt="Icono de X" width="35" height="15"> X
         </a>
-        <a class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
+        <a href="https://es-es.facebook.com/" class="flex justify-center md:justify-start items-center gap-2 text-white no-underline text-lg" href="#">
           <img src="{{ asset('img/fb.png') }}" alt="Icono de Facebook" width="35" height="15"> Facebook
         </a>
       </div>

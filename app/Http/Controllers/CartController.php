@@ -53,7 +53,6 @@ public function remove($item_id)
 {
     $user = Auth::user();
 
-    // Obtener el carrito del usuario autenticado
     $cart = Cart::where('user_id', $user->id)->first();
 
     if (!$cart) {
