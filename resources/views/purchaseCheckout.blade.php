@@ -56,6 +56,11 @@
                         {{ session('error') }}
                     </div>
                 @endif
+                @if(session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
                 <form action="{{ route('purchase.store') }}" method="POST" class="space-y-4" id="purchase-form">
                     @csrf
