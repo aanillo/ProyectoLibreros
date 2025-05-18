@@ -21,13 +21,13 @@
     <h2 class="text-center text-2xl font-semibold mb-6">{{ $writer->nombre }}</h2>
 
     <form method="POST" action="{{ route('updateWriter', $writer->id) }}" 
-        class="w-full max-w-2xl min-h-[500px] p-6 bg-amber-200 border-2 border-[#322411] rounded-2xl flex flex-col space-y-4">
+        class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-4 w-full max-w-4xl min-h-[500px] px-12 py-6 bg-amber-200 border-2 border-[#322411] rounded-2xl">
         @csrf
         @method('PUT')
 
-        <label for="nombre" class="w-full text-center">
+        <label for="nombre" class="text-left">
             <span class="block text-lg font-medium">Nombre:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="nombre" id="nombre" value="{{ old('nombre', $writer->nombre) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -36,9 +36,9 @@
         </label>
         @error("nombre") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <label for="imagen" class="w-full text-center">
+        <label for="imagen" class="text-left">
             <span class="block text-lg font-medium">URL de la imagen:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-image absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="url" name="imagen" id="imagen" value="{{ old('imagen', $writer->imagen) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -47,9 +47,9 @@
         </label>
         @error("imagen") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <label for="nombre_completo" class="w-full text-center">
+        <label for="nombre_completo" class="text-left">
             <span class="block text-lg font-medium">Nombre Completo:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-user-circle absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="nombre_completo" id="nombre_completo" value="{{ old('nombre_completo', $writer->nombre_completo) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -58,9 +58,9 @@
         </label>
         @error("nombre_completo") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <label for="pais" class="w-full text-center">
+        <label for="pais" class="text-left">
             <span class="block text-lg font-medium">País:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-flag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="text" name="pais" id="pais" value="{{ old('pais', $writer->pais) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -69,9 +69,9 @@
         </label>
         @error("pais") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <label for="nacimiento" class="w-full text-center">
+        <label for="nacimiento" class="text-left">
             <span class="block text-lg font-medium">Fecha de Nacimiento:</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="date" name="nacimiento" id="nacimiento" value="{{ old('nacimiento', $writer->nacimiento) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -80,9 +80,9 @@
         </label>
         @error("nacimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <label for="fallecimiento" class="w-full text-center">
+        <label for="fallecimiento" class="text-left">
             <span class="block text-lg font-medium">Fecha de Fallecimiento (opcional):</span>
-            <div class="relative w-full sm:w-4/5 mx-auto">
+            <div class="relative w-full mx-auto">
                 <i class="fas fa-calendar-times absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>
                 <input type="date" name="fallecimiento" id="fallecimiento" value="{{ old('fallecimiento', $writer->fallecimiento) }}"
                     class="w-full pl-10 p-2 border-2 border-black rounded-md mt-1"
@@ -91,10 +91,10 @@
         </label>
         @error("fallecimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-            <button class="bg-green-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
+        <div class="col-span-full flex flex-col sm:flex-row justify-center items-center gap-32 mt-4">
+            <button class="bg-green-500 w-72 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-green-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                 type="submit">Actualizar Autor</button>
-            <button class="bg-red-500 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
+            <button class="bg-red-500 w-72 font-bold text-black border-2 border-black px-6 py-2 rounded-md hover:bg-red-700 transform transition-transform duration-1000 ease-in-out hover:scale-110"
                 type="reset">Cancelar</button>
         </div>
     </form>
