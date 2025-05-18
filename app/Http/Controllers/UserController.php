@@ -83,39 +83,45 @@ class UserController extends Controller
 
     
     public function doLogin(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            "email" => "required|email:rfc,dns|exists:users,email",
-            "password" => "required",
-        ], [
-            "email.required" => "El campo de correo electrónico es obligatorio.",
-            "email.email" => "Por favor, introduce un correo electrónico válido.",
-            "email.exists" => "El correo electrónico no está registrado.",
-            "password.required" => "El campo de contraseña es obligatorio.",
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        "email" => "required|email:rfc,dns|exists:users,email",
+        "password" => "required",
+    ], [
+        "email.required" => "El campo de correo electrónico es obligatorio.",
+        "email.email" => "Por favor, introduce un correo electrónico válido.",
+        "email.exists" => "El correo electrónico no está registrado.",
+        "password.required" => "El campo de contraseña es obligatorio.",
+    ]);
+
     
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-    
-        $credentials = $request->only('email', 'password');
-        $user = User::where('email', $credentials['email'])->first();
-    
+    $validator->after(function ($validator) use ($request) {
+        $user = User::where('email', $request->email)->first();
         if ($user) {
-            
-            if ($user->rol === 'admin' && $credentials['password'] === 'Admin+123') {  // Aquí puedes ajustar la contraseña si es admin
-                Auth::login($user);
-                return redirect()->route('admin'); 
+            if ($user->rol === 'admin' && $request->password === 'Admin+123') {
+                return; 
             }
-    
-            
-            if (Auth::attempt($credentials)) {
-                return redirect()->intended('/home'); 
+            if (!Hash::check($request->password, $user->password)) {
+                $validator->errors()->add('password', 'Contraseña incorrecta');
             }
         }
-    
-        return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
+    });
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        if (Auth::user()->rol === 'admin') {
+            return redirect()->route('admin');
+        }
+        return redirect()->intended('/home');
+    }
+
+    return redirect()->route('login')->withErrors(['credentials' => 'Credenciales incorrectas'])->withInput();
+}
     
 
 

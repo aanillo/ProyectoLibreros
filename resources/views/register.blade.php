@@ -130,6 +130,7 @@
                 <i :class="show ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
             </button>
         </div>
+         @error("password_repeat") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
     </label>
 
     
