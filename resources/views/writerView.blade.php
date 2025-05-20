@@ -32,7 +32,11 @@
                 <p class="mt-16 mb-8"><strong>Nombre completo:</strong> {{ $writer->nombre_completo }}</p>
                 <p class="mb-8"><strong>País:</strong> {{ $writer->pais }}</p>
                 <p class="mb-8"><strong>Fecha nacimiento:</strong> {{ \Carbon\Carbon::parse($writer->nacimiento)->format('d-m-Y') }}</p>
+                @if ($writer->fallecimiento)
                 <p class="mb-16"><strong>Fecha fallecimiento:</strong> {{ \Carbon\Carbon::parse($writer->fallecimiento)->format('d-m-Y') }}</p>
+                @else
+                    <p class="mb-16"><strong>Fecha fallecimiento:</strong> </p>
+                @endif
             </div>
         </div>
             
@@ -72,7 +76,7 @@
     <div class="flex justify-center mt-6 gap-4 items-center text-[#322411] text-2xl">
         <button 
             @click="if (currentPage > 1) currentPage--"
-            class="hover:text-amber-500 transition"
+            clAass="hover:text-amber-500 transition"
             :disabled="currentPage === 1"
             :class="{ 'opacity-30 cursor-not-allowed': currentPage === 1 }"
         >

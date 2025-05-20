@@ -24,13 +24,13 @@
     formatSearchDate() {
         if (!this.searchQuery) return '';
         const parts = this.searchQuery.split('-'); 
-        return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : '';
+        return parts.length === 2 ? `${parts[1]}/${parts[0]}` : '';
     },
 
     get filteredPurchases() {
         if (!this.searchQuery) return this.allPurchases;
         const formattedSearch = this.formatSearchDate();
-        return this.allPurchases.filter(p => p.date.startsWith(formattedSearch));
+        return this.allPurchases.filter(p => p.date.includes(formattedSearch));
     },
 
     get totalPages() {
@@ -48,13 +48,13 @@
 
        
         <div class="mb-6 w-full max-w-md mx-auto">
-    <input
-    type="date"
-    x-model="searchQuery"
-    placeholder="Buscar compra por fecha"
-    class="w-full p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-/>
-</div>
+            <input
+            type="month"
+            x-model="searchQuery"
+            placeholder="Buscar compra por fecha"
+            class="w-full p-2 border-2 border-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+        </div>
 
         
         <template x-if="filteredPurchases.length === 0">

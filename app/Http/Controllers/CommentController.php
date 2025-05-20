@@ -76,7 +76,7 @@ public function deleteComment($id)
 
 private function containsBadWords($text)
 {
-    $badWords = ['idiota', 'cabrón', 'cabrona', 'tonto', 'estúpido', 'me cago en', 'p_t_s', 'putas', 'gilipollas', 'poya', 'picha', 'chocho', 'tonta', 'coño', 'puto', 'mierda', 'puta', 'subnormal', 'tus muertos', 'follar', 'follé', 'desgraciado', 'desgraciada']; 
+    $badWords = ['idiota', 'cabrón', 'cabrona', 'tonto', 'estúpido', 'me cago en', 'p_t_s', 'putas', 'gilipollas', 'maricón', 'maricona', 'pvta', 'poya', 'picha', 'chocho', 'tonta', 'coño', 'puto', 'mierda', 'puta', 'subnormal', 'tus muertos', 'follar', 'follo', 'follé', 'desgraciado', 'desgraciada']; 
     $pattern = '/\b(' . implode('|', array_map('preg_quote', $badWords)) . ')\b/i';
 
     return preg_match($pattern, $text);
