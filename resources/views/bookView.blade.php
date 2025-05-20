@@ -26,7 +26,7 @@
         
         <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center bg-amber-100 items-start p-4 mt-8 mb-12">
             
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0 mx-auto md:mx-0">
                 <img src="{{ $book->imagen }}" alt="{{ $book->titulo }}" 
                      class="w-80 object-cover rounded-md shadow-md">
             </div>
@@ -52,7 +52,7 @@
     </a>
         </div>
         
-        <div class="flex flex-row items-center justify-center gap-32">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-32 w-full max-w-4xl mx-auto">
         <div x-data="{ valoracion: {{ isset($book->valoracion) ? $book->valoracion : 0 }} }" class="mt-8 flex flex-col items-center space-y-4">
             <strong class="mb-4">Valora este libro:</strong>
             <div class="flex space-x-1">
@@ -132,13 +132,13 @@
 
     </div>
 
-   <div class="flex flex-row items-center gap-16">
-        <div class="flex items-center gap-4 mb-16 mt-16">
+   <div class="flex flex-col md:flex-row items-center gap-6 md:gap-16 mb-16 mt-16 w-full justify-center">
+        <div class="flex items-center gap-4">
             <h3 class="text-lg">Volver a Libros:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>
         </div>
 
-        <div class="flex items-center gap-4 mb-16 mt-16">
+        <div class="flex items-center gap-4">
             <h3 class="text-lg">Volver a Home:</h3>
             @auth
                 <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>

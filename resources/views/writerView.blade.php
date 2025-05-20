@@ -24,7 +24,7 @@
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $writer->nombre }}</h2>
         
         <div class="flex flex-col md:flex-row gap-16 shadow-lg rounded-xl border border-gray-200 justify-center bg-amber-100 items-start p-4 mt-8 mb-8">
-            <div class="flex-shrink-0">
+            <div class="flex-shrink-0 mx-auto md:mx-0">
                 <img src="{{ $writer->imagen }}" alt="{{ $writer->nombre }}" 
                     class="w-72 object-cover rounded-md shadow-md mt-4 mb-4">
             </div>
@@ -67,7 +67,7 @@
         <template x-for="libro in paginatedBooks" :key="libro.id">
             <div @click="window.location.href = baseUrl + libro.id"
                  class="cursor-pointer bg-[#F8F3EB] p-2 bg-[#F8F3EB] shadow-md rounded-lg hover:-translate-y-1 transition">
-                <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
+                <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-auto max-h-72 object-contain sm:h-72 sm:object-cover rounded-md">
                 <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
             </div>
         </template>
@@ -98,13 +98,13 @@
 </div>
 
 
-<div class="flex flex-row items-center gap-16">
-    <div class="flex items-center gap-4 mb-16 mt-16">
+<div class="flex flex-col md:flex-row items-center gap-6 md:gap-16 mb-16 mt-16 w-full justify-center">
+    <div class="flex items-center gap-4">
         <h3 class="text-lg">Volver a Autores:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600">Volver</a>
         </div>
 
-    <div class="flex items-center gap-4 mb-16 mt-16">
+    <div class="flex items-center gap-4">
         <h3 class="text-lg">Volver a Home:</h3>
         @auth
             <a href="{{ route("home") }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Home</a>

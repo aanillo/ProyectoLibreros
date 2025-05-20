@@ -112,7 +112,7 @@
         </div>
     </div>
 
-    <div class="flex flex-row items-center gap-16 mt-16 mb-16">
+    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-16 mb-16 mt-16 w-full justify-center">
         <div class="flex items-center gap-4">
             <h3 class="text-lg">Volver atrás:</h3>
             <a href="{{ url()->previous() }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Volver</a>

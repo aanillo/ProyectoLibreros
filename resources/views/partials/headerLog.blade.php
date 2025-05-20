@@ -85,7 +85,7 @@
         
       <a href="{{ route('profile', ['id' => auth()->user()->id]) }}"
             class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
-                    {{ request()->routeIs('profile') || request()->is('users/profile*') ? 'text-amber-200 scale-125' : 'text-white' }}">
+                    {{ request()->routeIs('profile') || request()->is('users/profile*') ? 'text-amber-200' : 'text-white' }}">
               {{ auth()->user()->username }}
           </a>
 

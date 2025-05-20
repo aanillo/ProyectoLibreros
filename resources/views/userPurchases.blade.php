@@ -114,7 +114,7 @@
         </div>
 
     
-    <div class="flex flex-row items-center gap-16 mt-16 mb-12">
+    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-16 mb-16 mt-16 w-full justify-center">
         <div class="flex items-center gap-4">
             <h3 class="text-lg">Volver atrás:</h3>
             <a href="{{ url()->previous() }}"

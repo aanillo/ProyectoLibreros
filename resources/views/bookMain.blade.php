@@ -104,7 +104,7 @@
             <template x-for="libro in paginatedBooks" :key="libro.id">
                 <div @click="window.location.href = baseUrl + libro.id"
                      class="cursor-pointer p-2 shadow-md rounded-lg hover:-translate-y-1 transition border border-gray-300 bg-[#F8F3EB]">
-                    <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-72 object-cover rounded-md">
+                    <img :src="libro.imagen" :alt="libro.titulo" class="w-full h-auto max-h-72 object-contain sm:h-72 sm:object-cover rounded-md">
                     <h2 class="text-lg font-semibold mt-2 text-center" x-text="libro.titulo"></h2>
                 </div>
             </template>
