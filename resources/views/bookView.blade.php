@@ -91,6 +91,16 @@
         </div>
         @endauth
 
+       @guest
+    <div class="flex justify-center text-xl items-center mt-16 mb-8">
+        <div class="text-center bg-yellow-100 text-black px-6 py-4 rounded-lg shadow-md max-w-xl">
+            <p class="text-xl font-semibold">¿Te interesa este libro?</p>
+            <p class="mt-2">Regístrate o inicia sesión para poder comprar, valorar y comentar sobre este libro.</p>
+        </div>
+    </div>
+@endguest
+
+
 
         <div x-data="{ open: false }" class="mt-12 w-full max-w-4xl">
             <div @click="open = !open" class="flex items-center cursor-pointer select-none text-lg font-semibold text-[#322411]">

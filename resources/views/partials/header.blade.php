@@ -31,13 +31,13 @@
           <div class="flex gap-12 mt-3">
             <a href="{{ route('books') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('books') ? 'text-amber-200 scale-125' : 'text-white' }}">
+                      {{ request()->is('books*', 'purchases*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Libros
             </a>
 
             <a href="{{ route('writers') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
-                      {{ request()->routeIs('writers') ? 'text-amber-200 scale-125' : 'text-white' }}">
+                      {{ request()->is('writers*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Autores
             </a>
           </div>
@@ -68,13 +68,13 @@
       <h1 class="text-2xl">Libreros</h1>
       <a href="{{ route('books') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
-                      {{ request()->routeIs('books') ? 'text-amber-200' : 'text-white' }}">
+                      {{ request()->is('books*', 'purchases*') ? 'text-amber-200' : 'text-white' }}">
               Libros
             </a>
 
             <a href="{{ route('writers') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-105 
-                      {{ request()->routeIs('writers') ? 'text-amber-200' : 'text-white' }}">
+                      {{ request()->is('writers*') ? 'text-amber-200' : 'text-white' }}">
               Autores
             </a>
       <hr class="border-white my-2" />
