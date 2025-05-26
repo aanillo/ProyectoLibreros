@@ -21,24 +21,39 @@ class BookController extends Controller
     ];
 
     $generoSeleccionado = $request->get('genero');
-    
+
     if ($generoSeleccionado === 'Todos' || !$generoSeleccionado) {
-        $librosPorGenero = Book::all();  
+        $query = Book::query();
     } else {
-        $librosPorGenero = Book::where('genero', $generoSeleccionado)->get();
+        $query = Book::where('genero', $generoSeleccionado);
+    }
+
+    $query->orderByDesc('valoracion');
+
+    $librosPorGenero = $query->get();
+
+    if (Auth::check()) {
+        $userId = Auth::id();
+
+        $userTopRatedBooks = Rating::where('user_id', $userId)
+            ->whereIn('valoracion', [4, 5])
+            ->pluck('book_id')
+            ->toArray();
+
+        $librosTop = $librosPorGenero->filter(function ($libro) use ($userTopRatedBooks) {
+            return in_array($libro->id, $userTopRatedBooks);
+        });
+
+        $librosRestantes = $librosPorGenero->reject(function ($libro) use ($userTopRatedBooks) {
+            return in_array($libro->id, $userTopRatedBooks);
+        });
+
+        $librosPorGenero = $librosTop->concat($librosRestantes)->values();
     }
 
     return view('bookMain', compact('generos', 'librosPorGenero'));
 }
 
-/*
-public function show($id) {
-    $post = Post::findOrFail($id);
-    $comments = Comment::where('post_id', $id)->orderByDesc('created_at')->get();
-
-    return view('commentform', compact('post', 'comments'));
-}
-*/
 
 public function showBook($id) {
     $book = Book::with('comments.user')->findOrFail($id); 
