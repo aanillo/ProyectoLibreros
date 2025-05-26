@@ -31,7 +31,7 @@
             <h1 class="text-3xl md:text-5xl text-white leading-tight">Libreros</h1>
           </a>
           <div class="flex gap-12 mt-3">
-            <a
+            <a href="{{ route('books') }}"
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
                       {{ request()->is('books*', 'purchases*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Libros
