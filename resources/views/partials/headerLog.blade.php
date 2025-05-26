@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between w-full gap-4">
       
       <div class="flex-shrink-0">
-        <a href="{{ route('home') }}">
+        <a  href="{{ route('home') }}">
           <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
         </a>
       </div>

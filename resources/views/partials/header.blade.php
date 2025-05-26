@@ -6,7 +6,7 @@
     <div class="flex items-center justify-between w-full gap-4">
 
       <div class="flex-shrink-0">
-        <a href="{{ route('home') }}">
+        <a href="{{ url('/') }}">
           <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
         </a>
       </div>
@@ -27,7 +27,7 @@
         
         
         <div class="flex flex-col text-left ml-48">
-          <a href="{{ url('/') }}" class="text-white">
+          <a class="text-white">
             <h1 class="text-3xl md:text-5xl text-white leading-tight">Libreros</h1>
           </a>
           <div class="flex gap-12 mt-3">
