@@ -3,7 +3,9 @@
     <div class="flex items-center justify-between w-full gap-4">
       
       <div class="flex-shrink-0">
-        <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        <a href="{{ route('home') }}">
+          <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        </a>
       </div>
 
       
@@ -17,7 +19,7 @@
       
       <div class="hidden md:flex md:items-center md:gap-8 w-full justify-between">
         <div class="flex flex-col text-left ml-48">
-          <a href="{{ route('home') }}" class="text-white">
+          <a class="text-white">
             <h1 class="text-4xl md:text-5xl text-white leading-tight">Libreros</h1>
           </a>
           <div class="flex gap-12 mt-3">

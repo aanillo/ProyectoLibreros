@@ -3,7 +3,9 @@
     <div class="flex items-center justify-between w-full gap-4">
       
       <div class="flex-shrink-0">
-        <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        <a href="{{ route('home') }}">
+          <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        </a>
       </div>
 
       <div class="text-center md:flex-grow">

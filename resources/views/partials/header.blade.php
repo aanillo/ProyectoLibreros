@@ -6,7 +6,9 @@
     <div class="flex items-center justify-between w-full gap-4">
 
       <div class="flex-shrink-0">
-        <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        <a href="{{ route('home') }}">
+          <img src="{{ asset('img/LogoInicial.jpg') }}" width="120px" />
+        </a>
       </div>
 
       
@@ -29,7 +31,7 @@
             <h1 class="text-3xl md:text-5xl text-white leading-tight">Libreros</h1>
           </a>
           <div class="flex gap-12 mt-3">
-            <a href="{{ route('books') }}"
+            <a
               class="text-xl md:text-xl transition-transform duration-300 hover:scale-125 
                       {{ request()->is('books*', 'purchases*') ? 'text-amber-200 scale-125' : 'text-white' }}">
               Libros
