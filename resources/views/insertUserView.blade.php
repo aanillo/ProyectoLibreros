@@ -80,7 +80,7 @@
             @error("fecha_nacimiento") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
 
            
-            <label for="localidad" class="text-center">
+            <label for="localidad" class="text-left">
                 <span class="block text-lg font-medium">Localidad:</span>
                 <div class="relative w-full mx-auto">
                     <i class="fas fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-800"></i>

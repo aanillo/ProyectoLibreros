@@ -26,7 +26,7 @@ class UserController extends Controller
             "username" => "required|regex:/^[\pL\s0-9]+$/u|min:4|max:20|unique:users,username",
             "email" => "required|email:rfc,dns|unique:users,email",
             "fecha_nacimiento" => "required|date|before_or_equal:" . now()->subYears(13)->format('Y-m-d'),
-            "localidad" => "required|string|max:50",
+            "localidad" => "required|regex:/^[\pL\s]+$/u|max:50",
             "password" => "required|min:8|max:20|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/",
             "password_repeat" => "required|same:password"
         ], [
@@ -48,6 +48,7 @@ class UserController extends Controller
             "fecha_nacimiento.date" => "La fecha de nacimiento no es válida.",
             "fecha_nacimiento.before_or_equal" => "Debes tener al menos 13 años para registrarte.",
             "localidad.required" => "El campo localidad es obligatorio.",
+            "localidad.regex" => "La localidad solo puede contener letras y espacios.",
             "localidad.max" => "La localidad no debe superar los 50 caracteres.",
             "password.required" => "La contraseña es obligatoria.",
             "password.min" => "La contraseña debe contener al menos 8 caracteres.",
