@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class CommentController extends Controller
 {
@@ -26,6 +27,12 @@ class CommentController extends Controller
         if ($this->containsBadWords($request->comment)) {
             return back()->withErrors(['comment' => 'El comentario contiene lenguaje inapropiado.'])->withInput();
         }
+
+        
+        if ($this->isInappropriateByAI($request->comment)) {
+            return back()->withErrors(['comment' => 'El comentario ha sido marcado como inapropiado por el moderador.'])->withInput();
+        }
+
     
         $comment = new Comment();
         $comment->comment = $request->comment;
@@ -74,11 +81,77 @@ public function deleteComment($id)
     return redirect()->route('admin.comments')->with('success', 'Comentario eliminado correctamente.');
 }
 
+
 private function containsBadWords($text)
 {
-    $badWords = ['idiota', 'cabrón', 'cabrona', 'tonto', 'estúpido', 'me cago en', 'p_t_s', 'putas', 'gilipollas', 'maricón', 'maricona', 'pvta', 'poya', 'picha', 'chocho', 'tonta', 'coño', 'puto', 'mierda', 'puta', 'subnormal', 'tus muertos', 'follar', 'follo', 'follé', 'desgraciado', 'desgraciada']; 
-    $pattern = '/\b(' . implode('|', array_map('preg_quote', $badWords)) . ')\b/i';
+    $badWords = [
+        'idiota',
+        'cabrón',
+        'cabrona',
+        'tonto',
+        'estúpido',
+        'me cago en',
+        'putas',
+        'gilipollas',
+        'maricón',
+        'maricona',
+        'pvta',
+        'poya',
+        'picha',
+        'chocho',
+        'tonta',
+        'coño',
+        'puto',
+        'mierda',
+        'puta',
+        'subnormal',
+        'tus muertos',
+        'follar',
+        'follo',
+        'follé',
+        'desgraciado',
+        'desgraciada'
+    ];
+
+    $replacements = [
+        'a' => '[a@4]',
+        'e' => '[e3]',
+        'i' => '[i1!]',
+        'o' => '[o0]',
+        'u' => '[uü]',
+    ];
+
+    foreach ($badWords as &$word) {
+        $word = preg_quote($word, '/'); 
+
+        foreach ($replacements as $vowel => $pattern) {
+            $word = str_ireplace($vowel, $pattern, $word);
+        }
+    }
+    unset($word); 
+    $pattern = '/' . implode('|', $badWords) . '/iu';
 
     return preg_match($pattern, $text);
 }
+
+
+
+    private function isInappropriateByAI($text)
+{
+    try {
+        $response = Http::withToken(env('OPENAI_API_KEY'))->post('https://api.openai.com/v1/moderations', [
+            'input' => $text,
+        ]);
+
+        $result = $response->json();
+        $flagged = $result['results'][0]['flagged'] ?? false;
+
+        return $flagged;
+    } catch (\Exception $e) {
+        \Log::error('Error al contactar la API de moderación: ' . $e->getMessage());
+        return false;
+    }
+}
+
+
 }
