@@ -27,12 +27,6 @@ class CommentController extends Controller
         if ($this->containsBadWords($request->comment)) {
             return back()->withErrors(['comment' => 'El comentario contiene lenguaje inapropiado.'])->withInput();
         }
-
-        
-        if ($this->isInappropriateByAI($request->comment)) {
-            return back()->withErrors(['comment' => 'El comentario ha sido marcado como inapropiado por el moderador.'])->withInput();
-        }
-
     
         $comment = new Comment();
         $comment->comment = $request->comment;
@@ -95,6 +89,10 @@ private function containsBadWords($text)
         'gilipollas',
         'maricón',
         'maricona',
+        'guarra',
+        'guarro',
+        'mi€rda',
+        'carajote',
         'pvta',
         'poya',
         'picha',
@@ -132,25 +130,6 @@ private function containsBadWords($text)
     $pattern = '/' . implode('|', $badWords) . '/iu';
 
     return preg_match($pattern, $text);
-}
-
-
-
-    private function isInappropriateByAI($text)
-{
-    try {
-        $response = Http::withToken(env('OPENAI_API_KEY'))->post('https://api.openai.com/v1/moderations', [
-            'input' => $text,
-        ]);
-
-        $result = $response->json();
-        $flagged = $result['results'][0]['flagged'] ?? false;
-
-        return $flagged;
-    } catch (\Exception $e) {
-        \Log::error('Error al contactar la API de moderación: ' . $e->getMessage());
-        return false;
-    }
 }
 
 
