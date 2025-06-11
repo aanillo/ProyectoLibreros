@@ -14,7 +14,9 @@
     @include('partials.headerAdmin') 
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-36">
-        
+
+    <!-- Enlaces a los diferentes elementos -->
+
     <section class="flex-grow flex flex-row items-center gap-8">
  
         <div class="flex-grow flex flex-col items-center text-center">

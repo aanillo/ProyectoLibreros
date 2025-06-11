@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Http;
 
 class CommentController extends Controller
 {
-    //
+    
+    // publicar comentario
+
     public function store(Request $request) {
         $request->validate([
             'comment' => 'required|string|max:1000',
@@ -39,6 +41,7 @@ class CommentController extends Controller
     }
     
 
+    // mostrar comentarios
     
     public function show($id) {
         $book = Book::findOrFail($id);
@@ -46,6 +49,9 @@ class CommentController extends Controller
     
         return view('commentform', compact('book', 'comments'));
     }
+
+
+    // eliminar comentario
 
     public function delete($id)
 {
@@ -60,11 +66,16 @@ class CommentController extends Controller
 }
     
 
+// lista de comentarios
+
 public function indexComments() 
 {
     $comments = Comment::with(['book:id,titulo', 'user:id,username'])->get();
     return view('commentsAdminView', compact('comments'));
 }
+
+
+// borrar comentario
 
 public function deleteComment($id)
 {
@@ -75,6 +86,8 @@ public function deleteComment($id)
     return redirect()->route('admin.comments')->with('success', 'Comentario eliminado correctamente.');
 }
 
+
+// control de lenguaje malsonante u ofensivo
 
 private function containsBadWords($text)
 {

@@ -17,6 +17,7 @@
         
     <h1 class="text-center text-3xl font-semibold mb-8">Editar libro</h1>
 
+    <!-- Formulario para editar libro -->
     
     <h2 class="text-center text-2xl font-semibold mb-6">{{ $book->titulo }}</h2>
 

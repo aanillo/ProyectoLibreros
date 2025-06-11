@@ -11,6 +11,8 @@
     <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Finalizar pago</h2>
 
+        <!-- Datos de la compra a través de Stripe -->
+
         <form id="payment-form" class="space-y-4">
             
             <div>
@@ -49,6 +51,8 @@
             </button>
         </form>
     </div>
+
+    <!-- Script que aplica los datos a la compra -->
 
     <script>
         const stripe = Stripe("{{ env('STRIPE_KEY') }}");

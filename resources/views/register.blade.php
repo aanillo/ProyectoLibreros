@@ -18,6 +18,8 @@
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
         <h1 class="text-center text-4xl font-semibold mb-8 text-[#322411]">REGISTRO</h1>
 
+        <!-- Formulario de registro -->
+
         <form method="POST" action="{{ route('doRegister') }}"
     class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-4 w-full max-w-4xl min-h-[500px] px-12 py-6 bg-amber-200 border-2 border-[#322411] rounded-2xl">
     @csrf
@@ -108,6 +110,7 @@
         @error("password") <small class="text-red-500 text-lg font-bold">{{ $message }}</small> @enderror
     </label>
 
+    <!-- Repetición de contraseña -->
     
     <label for="password_repeat" class="text-left col-span-1"
         x-data="{ repeat: '', original: '', show: false }"

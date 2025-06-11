@@ -46,6 +46,7 @@
         <h2 class="text-xl mt-2 text-center mb-6">Consulta información sobre tus autores favoritos y sus mejores obras</h2>
     </div>
 
+    <!-- Lista de autores -->
     
     <div class="mb-6 w-full max-w-md mx-auto">
         <input

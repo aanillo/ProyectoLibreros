@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    //
+    // formulario para registro
     public function showRegister(){
         return view('register');
     }
 
 
-    
+    // acción de registro
     public function doRegister(Request $request){
         $validator = Validator::make($request->all(), [
             "nombre" => "required|regex:/^[\pL\s]+$/u|max:30",
@@ -76,13 +76,13 @@ class UserController extends Controller
     }
     
 
-
+    // formulario de login
     public function showLogin() {
         return view('login');
     }
 
 
-    
+    // acción de login
    public function doLogin(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -128,7 +128,7 @@ class UserController extends Controller
 }
 
     
-
+// cierre de sesión
 
 public function logout(){
     Auth::logout(); 
@@ -137,10 +137,13 @@ public function logout(){
     return view('home', compact('randomBooks', 'randomWriters'));
 }
 
+// mostrar confirmación de cierre de sesión
 public function mostrarViewLogout() {
     return view('confirmLogout');
 }
 
+
+// borrar usuario
 
 public function deleteUser(Request $request){
     $user = Auth::user();
@@ -155,6 +158,8 @@ public function deleteUser(Request $request){
 }
 
 
+// obtener usuarios
+
 public function indexUsers()
     {
         $users = User::all();
@@ -162,12 +167,14 @@ public function indexUsers()
     }
 
 
+    // formulario para insertar usuario
+
     public function showInsert(){
         return view('insertUserView');
     }
 
 
-    
+    // acción de inserción de usuario
     public function doInsert(Request $request){
         $validator = Validator::make($request->all(), [
             "nombre" => "required|regex:/^[\pL\s]+$/u|max:30",
@@ -224,12 +231,14 @@ public function indexUsers()
     }
 
 
+    // vista para editar usuario
     public function edit($id) {
         $user = User::findOrFail($id);
         return view('editUser', compact('user'));
     }
 
     
+    // actualizar usuario
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             "nombre" => "required|regex:/^[\pL\s]+$/u|max:30",
@@ -288,12 +297,15 @@ public function indexUsers()
     }
     
 
-
+    // borrar usuario
     public function delete($id) {
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('admin.users')->with('success', 'El usuario ha sido eliminado correctamente'); 
     }
+
+
+    // mostrar datos del usuario autenticado
 
     public function showProfile($id)
 {
@@ -301,11 +313,15 @@ public function indexUsers()
     return view('userProfile', compact(var_name: 'user'));
 }
 
+// vista para editar usuario
+
 public function editProfile($id) {
     $user = User::findOrFail($id);
     return view('editProfile', compact('user'));
 }
 
+
+// editar usuario
 
 public function updateProfile(Request $request, $id) {
     $validator = Validator::make($request->all(), [
@@ -364,12 +380,16 @@ public function updateProfile(Request $request, $id) {
     return redirect()->route('profile', ['id' => $user->id])->with('success', 'El usuario ha sido editado correctamente');
 }
 
+// vista para editar contraseña
+
 public function editProfilePsw($id)
 {
     $user = User::findOrFail($id);
     return view('editPsw', compact('user'));
 }
 
+
+// edición de contraseña
 
 public function updateProfilePsw(Request $request, $id)
 {
@@ -401,12 +421,16 @@ public function updateProfilePsw(Request $request, $id)
     return redirect()->route('profile', ['id' => $user->id])->with('success', 'Contraseña actualizada correctamente.');
 }
 
+
+// vista para confirmar la eliminación del usuario
+
 public function deleteShow($id)
 {
     $user = User::findOrFail($id);
     return view('confirmDelete', compact('user'));
 }
 
+// borrado de usuario
 
 public function deleteProfile($id) {
     $user = User::findOrFail($id);
@@ -414,6 +438,8 @@ public function deleteProfile($id) {
     return redirect('/')->with('success', 'El usuario ha sido eliminado correctamente');
 }
 
+
+// mostrar historial de compras del usuario autenticado
 
 public function showPurchases($id) {
     $user = User::with(['purchases' => function($query) {

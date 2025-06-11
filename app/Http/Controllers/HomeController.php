@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    // página principal
     public function index() {
         $randomBooks = Book::all()->shuffle()->take(7);
         $randomWriters = Writer::all()->shuffle()->take(16);
         return view('home', compact('randomBooks', 'randomWriters'));
     }
     
+
+    // página principal usuario logueado
     public function indexLog()
 {
     $user = auth()->user();
@@ -23,6 +25,8 @@ class HomeController extends Controller
     return view('homeLog', compact('user', 'randomBooks', 'randomWriters'));
 }
 
+
+// página principal de admin
 
 public function indexAdmin()
 {

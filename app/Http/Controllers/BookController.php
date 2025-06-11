@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 class BookController extends Controller
 {
 
+    // mostrar libros por género seleccionado
+
     public function mostrarVistaLibros(Request $request)
 {
     $generos = [
@@ -54,6 +56,7 @@ class BookController extends Controller
     return view('bookMain', compact('generos', 'librosPorGenero'));
 }
 
+// mostrar libro
 
 public function showBook($id) {
     $book = Book::with('comments.user')->findOrFail($id); 
@@ -61,6 +64,8 @@ public function showBook($id) {
     return view('bookView', compact('book'));
 }
 
+
+// valorar libro
 
 public function rate(Request $request, $id) {
 
@@ -82,6 +87,8 @@ public function rate(Request $request, $id) {
     return redirect()->back()->with('success', 'Tu valoración se ha guardado correctamente.');
 
 }
+
+// todos los libros
       
 public function indexBooks() 
     {
@@ -89,10 +96,15 @@ public function indexBooks()
         return view('booksAdminView', compact('books'));
     }
 
+
+    // formulario para insertar libro
+
     public function showInsert() {
         $writers = Writer::all();
         return view('insertBookView', compact('writers'));
     }
+
+    // inserción de libro
 
     public function doInsert(Request $request) {
         $validator = Validator::make($request->all(), [
@@ -151,6 +163,8 @@ public function indexBooks()
         return redirect()->route('admin.books')->with('success', 'Libro insertado correctamente.');
     }
 
+    
+    // editar libro 
 
     public function edit($id)
 {
@@ -159,6 +173,8 @@ public function indexBooks()
     return view('editBook', compact('book', 'writers'));  
 }
 
+
+    // actualizar libro
     
 public function update(Request $request, $id)
 {
@@ -221,6 +237,8 @@ public function update(Request $request, $id)
     return redirect()->route('admin.books')->with('success', 'Libro editado correctamente.');  
 }
 
+
+// borrar libro
 
 public function delete($id)
 {

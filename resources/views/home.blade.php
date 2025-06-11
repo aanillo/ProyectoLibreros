@@ -24,6 +24,8 @@
             <h3 class="text-2xl font-semibold mb-4">Libros</h3>
             <p class="mb-4 text-lg">Disfruta de nuestro amplio catálogo de libros, podrás buscar por géneros y por autores.</p>
         
+            <!-- Lista aleatoria de libros -->
+
             <div class="flex flex-wrap justify-center gap-4 max-w-7xl mx-auto">
                 @foreach ($randomBooks as $book)
                     <div class="flex flex-col items-center w-46 h-72">
@@ -36,6 +38,8 @@
             </div>
             <hr class="mt-4 border-[#F5D074] w-3/4 border-2 mx-auto">
         </section>
+
+         <!-- Lista aleatoria de escritores -->
 
         <section class="w-full text-center">
             <h3 class="text-2xl font-semibold mb-4">Autores</h3>

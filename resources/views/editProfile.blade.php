@@ -15,6 +15,8 @@
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
 
+        <!-- Formulario para editar perfil -->
+
         <h1 class="text-center text-3xl font-semibold mb-8">Editar Usuario</h1>
 
         <h2 class="text-center text-2xl font-semibold mb-6">{{ $user->nombre }} {{ $user->apellidos }}</h2>

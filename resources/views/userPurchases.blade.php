@@ -43,6 +43,8 @@
     }
 }">
 
+    <!-- Historial de compras del usuario logueado -->
+
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">HISTORIAL</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Compras realizadas por {{ $user->username }}</h2>
 

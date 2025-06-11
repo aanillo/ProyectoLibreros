@@ -23,6 +23,7 @@
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBROS</h1>
         <h2 class="text-xl mt-2 text-center mb-6">Realiza tu búsqueda según tipo o género</h2>
 
+    <!-- Lista de géneros para seleccionar -->
         <ul class="grid grid-cols-2 md:grid-cols-5 gap-4 w-full">
             <li class="group p-2 shadow hover:shadow-lg transition border-2 border-solid flex items-center justify-center w-[160px]
                 {{ request()->get('genero') === null || request()->get('genero') === 'Todos' ? 'bg-[#322411] border-amber-200' : 'bg-amber-200 border-[#322411]' }}
@@ -95,6 +96,8 @@
             </span>
         </h2>
 
+
+        <!-- Muestra de libros y paginación -->
 
         <div x-show="filteredBooks.length === 0" class="text-center text-lg font-semibold text-red-500">
             No se encontraron libros.

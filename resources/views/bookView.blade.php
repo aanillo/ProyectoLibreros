@@ -19,6 +19,9 @@
 @endauth
 
 <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-56">
+
+    <!-- Muestra del libro seleccionado -->
+
     <div class="max-w-5xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">LIBRO</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $book->titulo }}</h2>
@@ -42,6 +45,7 @@
             </div>
         </div>
 
+        <!-- Acciones de usuario sobre el libro -->
 
         @auth
         <div class="justify-center items-center flex flex-row gap-8 mt-16 mb-8">
@@ -91,6 +95,8 @@
         </div>
         @endauth
 
+        <!-- Caso de no estar logueado -->
+
        @guest
     <div class="flex justify-center text-xl items-center mt-16 mb-8">
         <div class="text-center bg-yellow-100 text-black px-6 py-4 rounded-lg shadow-md max-w-xl">
@@ -100,7 +106,7 @@
     </div>
 @endguest
 
-
+        <!-- Muestra de comentarios -->
 
         <div x-data="{ open: false }" class="mt-12 w-full max-w-4xl">
             <div @click="open = !open" class="flex items-center cursor-pointer select-none text-lg font-semibold text-[#322411]">

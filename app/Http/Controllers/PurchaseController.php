@@ -13,11 +13,16 @@ use Stripe\Stripe;
 
 class PurchaseController extends Controller
 {
+
+    // crear compra
     public function create(Request $request)
     {
         $book = Book::findOrFail($request->book_id);
         return view('purchaseCheckout', ['book' => $book]);
     }
+
+
+    // insertar compra
 
     public function store(Request $request)
 {
@@ -53,6 +58,9 @@ class PurchaseController extends Controller
     return $this->processStripePayment($purchase, $totalPrice);
 }
 
+
+    // implementación de Stripe
+
     private function processStripePayment($purchase, $totalPrice)
 {
     try {
@@ -85,21 +93,33 @@ class PurchaseController extends Controller
     }
 }
 
+
+// compra con éxito
+
     public function success(Purchase $purchase)
 {
     return view('success', ['purchase' => $purchase]);
 }
+
+
+// compra fallida
 
 public function failure(Purchase $purchase)
 {
     return view('cancel', ['purchase' => $purchase]);
 }
 
+
+// vista para comprar todos los libros del carro
+
 public function checkoutAll(Request $request)
 {
     $cart = $request->user()->cart;
     return view('purchaseCheckoutAll', ['cart' => $cart]);
 }
+
+
+// comprar todos los libros del carro
 
 public function storeAll(Request $request)
 {
@@ -156,11 +176,16 @@ public function storeAll(Request $request)
 }
 
 
+// obtener compras 
+
 public function indexPurchase() 
 {
     $purchases = Purchase::with(['books:id,titulo', 'user:id,username'])->get();
     return view('purchaseAdminView', compact('purchases'));
 }
+
+
+// borrar
 
 public function deletePurchase($id)
 {

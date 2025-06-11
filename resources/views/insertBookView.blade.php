@@ -16,6 +16,8 @@
         
     <h1 class="text-center text-3xl font-semibold mb-8">Insertar Libro</h1>
 
+     <!-- Formulario para insertar libro -->
+
 <form method="POST" action="{{ route('doInsert') }}"
     class="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-4 w-full max-w-4xl min-h-[500px] px-12 py-6 bg-amber-200 border-2 border-[#322411] rounded-2xl">
     @csrf

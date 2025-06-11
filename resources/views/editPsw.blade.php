@@ -14,6 +14,8 @@
     @include('partials.headerLog') 
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-52">
+
+    <!-- Formulario para restablecer contraseña -->
         
     <h1 class="text-center text-3xl font-semibold mb-8">Editar Usuario</h1>
 

@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    //
+    // Vista para insertar elemento al carro 
+
     public function index()
     {
         $cart = auth()->user()->cart()->with('cartItems.book')->first();
 
         return view('cartMain', compact('cart'));
     }
+
+
+// añadir al carro 
 
 public function addToCart(Request $request)
 {
@@ -49,6 +53,10 @@ public function addToCart(Request $request)
 
     return redirect()->back()->with('success', 'Libro añadido al carrito correctamente.');
 }
+
+
+// eliminar libro del carro
+
 public function remove($item_id)
 {
     $user = Auth::user();
@@ -72,8 +80,6 @@ public function remove($item_id)
         return redirect()->back()->with('error', 'El libro no está en tu carrito.');
     }
 }
-
-
 
 
 }

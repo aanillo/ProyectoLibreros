@@ -19,6 +19,9 @@
 @endauth
 
 <main class="flex-grow flex flex-col items-center bg-white text-black p-6 mt-56">
+
+    <!-- Datos del autor seleccionado -->
+
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-bold mb-6 text-center text-[#322411]">AUTOR</h1>
         <h2 class="text-2xl font-bold mb-2 text-center text-[#322411]">{{ $writer->nombre }}</h2>
@@ -57,6 +60,9 @@
          allBooks: @js($booksWriter),
          baseUrl: '{{ url('books/libro') }}/'
      }">
+
+    <!-- Lista de libros escritos por el autor seleccionado -->
+
     <h2 class="text-xl mt-2 text-center mb-6 font-bold text-[#322411]">Libros de {{ $writer->nombre }}</h2>
 
     <div x-show="allBooks.length === 0" class="text-center text-lg font-semibold text-red-500">

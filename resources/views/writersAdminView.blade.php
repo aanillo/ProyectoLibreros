@@ -19,6 +19,8 @@
             <h1 class="text-3xl font-bold">AUTORES</h1>
         </section>
 
+        <!-- Enlace para insertar autor -->
+
         <div class="flex-grow flex flex-row items-center gap-4 mb-8">
             <h3 class="text-lg">Insertar autor:</h3>
             <a href="{{ route('insertWriter') }}" class="btnHome bg-amber-200 text-[#322411] font-bold border-2 border-solid border-black px-10 py-1.5 rounded-md hover:bg-yellow-600 transform transition-transform duration-1000 ease-in-out hover:scale-110">Insertar</a>
@@ -57,7 +59,10 @@
         />
     </div>
 
-        </div>
+    </div>
+
+     <!-- Lista completa de escritores -->
+
     <h2 class="text-2xl text-center font-bold mb-6">Lista de autores</h2>
     <table class="w-[90%] mx-auto bg-white border border-gray-200">
         <thead>

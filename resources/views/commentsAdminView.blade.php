@@ -58,6 +58,8 @@
                 />
             </div>
 
+            <!-- Comentarios totales de los usuarios -->
+
             <h2 class="text-2xl text-center font-bold mb-6">Lista de comentarios</h2>
 
             <table class="w-[90%] mx-auto bg-white border border-gray-200">

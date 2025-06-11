@@ -22,6 +22,8 @@
     <h1 class="text-4xl font-bold mb-4 text-center text-[#322411]">CARRO</h1>
     <h2 class="text-xl mt-2 text-center mb-6">Carrito de la compra de {{ auth()->user()->username }}</h2>
 
+    <!-- Carro de la compra con los libros -->
+
     @if ($cart && $cart->cartItems->count() > 0)
         <div class="w-full max-w-5xl bg-amber-200 rounded-xl shadow-lg px-4 sm:px-8 py-6 space-y-6">
 

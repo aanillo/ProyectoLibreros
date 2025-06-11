@@ -14,6 +14,8 @@
     @include('partials.headerAdmin')
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
+
+     <!-- Formulario para insertar escritor -->
         
     <h1 class="text-center text-3xl font-semibold mb-8">Insertar Autor</h1>
 

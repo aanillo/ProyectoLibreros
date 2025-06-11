@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class WriterController extends Controller
 {
-    //
+    // mostrar autores
     public function mostrarVistaAutores(Request $request) {
 
         $autores = Writer::all();
@@ -16,11 +16,16 @@ class WriterController extends Controller
         return view('writerMain', compact('autores'));
     }
 
+    // mostrar un autor 
+
     public function showWriter($id) {
         $writer = Writer::findOrFail($id);
         $booksWriter = $writer->books;
         return view('writerView', compact('writer', 'booksWriter'));
     }
+
+
+    // vista de escritores en admin
 
     public function indexWriters() 
     {
@@ -28,9 +33,14 @@ class WriterController extends Controller
         return view('writersAdminView', compact('writers'));
     }
 
+    // mostrar formulario para insertar
+
     public function showInsert() {
         return view('insertWriterView');
     }
+
+
+    // insertar escritor
 
     public function doInsert(Request $request) {
         $validator = Validator::make($request->all(), [
@@ -79,6 +89,8 @@ class WriterController extends Controller
     }
 
 
+    // formulario para editar
+
     public function edit($id)
     {
         $writer = Writer::findOrFail($id);
@@ -86,6 +98,7 @@ class WriterController extends Controller
     }
     
 
+    // editar escritor
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
@@ -133,6 +146,9 @@ class WriterController extends Controller
 
         return redirect()->route('admin.writers')->with('success', 'Autor editado correctamente.');
     }
+
+
+    // eliminar
 
     public function delete($id)
 {

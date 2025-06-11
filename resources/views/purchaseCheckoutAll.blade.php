@@ -24,6 +24,8 @@
     <div class="w-full max-w-4xl mx-auto px-4 mt-8">
         <div class="flex flex-col bg-amber-200 shadow-lg rounded-xl p-6 md:p-10">
 
+            <!-- Compra de todos los libros del carro -->
+
             @foreach ($cart->cartItems as $item)
                 <div class="w-[90%] mx-auto flex flex-col md:flex-row gap-8 mb-4 bg-white p-6 rounded-lg shadow">
                     <div class="flex flex-row gap-4 md:w-1/2 items-center md:items-start">

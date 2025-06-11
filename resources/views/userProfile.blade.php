@@ -19,6 +19,8 @@
 
             <div class="flex flex-col md:flex-row gap-8 mt-8 w-full justify-center items-start">
 
+                <!-- Datos del perfil autenticado -->
+
                 <div class="flex flex-col md:flex-row gap-8 flex-grow bg-amber-200 shadow-lg rounded-xl p-6 md:p-10">
                     <div class="w-60 h-60 flex-shrink-0 mt-8">
                         <img src="{{ asset('img/book.jpg') }}" alt="Foto de perfil" class="w-full h-full object-cover rounded-full border border-gray-300" />

@@ -19,6 +19,8 @@
             <h1 class="text-3xl font-bold">COMPRAS</h1>
         </section>
 
+        <!-- Lista de compras de todos los usuarios -->
+
         <section class="w-full overflow-x-auto"
         x-data="{
             currentPage: 1,

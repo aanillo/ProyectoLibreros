@@ -25,6 +25,8 @@
     <div class="w-full max-w-4xl mx-auto px-4 mt-8">
         <div class="flex flex-col md:flex-row gap-6 bg-amber-200 shadow-lg rounded-xl p-6 md:p-10">
 
+            <!-- Libro seleccionado y usuario que va a comprar -->
+
             <div class="flex flex-col md:w-1/2 text-center items-center md:items-start">
                 <h2 class="text-4xl font-bold text-[#322411] mb-12">{{ $book->titulo }}</h2>
                 <img src="{{ $book->imagen }}" alt="{{ $book->titulo }}" 
@@ -61,6 +63,9 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+
+                <!-- Formulario con datos de envío -->
 
                 <form action="{{ route('purchase.store') }}" method="POST" class="space-y-4" id="purchase-form">
                     @csrf
@@ -136,6 +141,8 @@
 </main>
 
 @include('partials.footer')
+
+<!-- Script para insertar los datos del envío en la variable de dirección -->
 
 <script>
     const purchaseBtn = document.getElementById('purchase-btn');

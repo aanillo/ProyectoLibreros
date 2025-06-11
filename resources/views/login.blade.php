@@ -16,6 +16,9 @@
     @include('partials.header')
 
     <main class="flex-grow flex flex-col items-center bg-white text-black px-6 mt-48">
+
+        <!-- Formulario para inicio de sesión -->
+
         <h1 class="text-center text-4xl font-semibold mb-8 text-[#322411]">LOGIN</h1>
 
         <form method="POST" action="{{ route('doLogin') }}"
