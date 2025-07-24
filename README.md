@@ -3,7 +3,7 @@
 ## Título
 **LIBREROS**
 
-![Logo](/img/LogoInicial.jpg)
+![Logo](LogoInicial.jpg)
 
 
 ## Autor
