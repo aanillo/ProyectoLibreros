@@ -3,7 +3,7 @@
 ## Título
 **LIBREROS**
 
-![Logo](C:\Users\alfon\OneDrive\Escritorio\DAW\ProyectoFinal\LogoInicial.jpg)
+![Logo](/img/LogoInicial.jpg)
 
 
 ## Autor
@@ -72,6 +72,7 @@ La lectura sigue siendo una de las formas más ricas de adquisición de conocimi
 
 La arquitectura sigue el modelo cliente-servidor. Además se ha empleado la arquitectura modelo - vista - controlador.
 
+---
 
 ## Tecnologías utilizadas
 
