@@ -7,11 +7,11 @@
 
 
 ## Autor
-- **Nombre:** [Alfonso Jesús Anillo Romero]
-- **Grado:** [Desarrollo de Aplicaciones Web]
-- **Centro:** [IES Rafael Alberti]
+- **Nombre:** Alfonso Jesús Anillo Romero
+- **Grado:** Desarrollo de Aplicaciones Web
+- **Centro:** IES Rafael Alberti
 - **Curso académico:** 2024/2025
-- **Tutor/a:** [Nombre del tutor/a]
+
 
 - **Enlace a la web:** [Libreros](http://16.171.143.74:81/)
 
