@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Trabajo de Fin de Grado
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Título
+**LIBREROS**
 
-## About Laravel
+![Logo](C:\Users\alfon\OneDrive\Escritorio\DAW\ProyectoFinal\LogoInicial.jpg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Autor
+- **Nombre:** [Alfonso Jesús Anillo Romero]
+- **Grado:** [Desarrollo de Aplicaciones Web]
+- **Centro:** [IES Rafael Alberti]
+- **Curso académico:** 2024/2025
+- **Tutor/a:** [Nombre del tutor/a]
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Enlace a la web:** [Libreros](http://16.171.143.74:81/)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Resumen
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Este Trabajo de Fin de Grado consiste en el desarrollo de una aplicación web destinada a lectores que deseen consultar información sobre libros, comprarlos, valorarlos y compartir sus opiniones mediante comentarios. La plataforma busca fomentar la interacción entre usuarios y facilitar el acceso a la información editorial.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Índice
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. [Introducción](#introducción)
+2. [Objetivos](#objetivos)
+3. [Desarrollo de la aplicación](#desarrollo-de-la-aplicación)
+4. [Tecnologías utilizadas](#tecnologías-utilizadas)
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Introducción
 
-## Contributing
+La lectura sigue siendo una de las formas más ricas de adquisición de conocimiento y ocio. En la era digital, es fundamental ofrecer plataformas interactivas que permitan a los lectores acceder a libros, compartir valoraciones y conectar con otros lectores. Este TFG propone el diseño y desarrollo de una web funcional que cumpla con estas necesidades.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Objetivos
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Desarrollar una página web funcional para lectores.
+- Permitir la consulta de libros con fichas detalladas.
+- Implementar un sistema de compra simple y seguro.
+- Habilitar valoraciones y comentarios por parte de los usuarios.
+- Fomentar una comunidad de lectores activos.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Desarrollo de la aplicación
+
+### Análisis de requisitos
+
+**Requisitos funcionales:**
+- Registro y autenticación de usuarios.
+- Consulta de libros por título, autor o género.
+- Valoración mediante sistema de estrellas.
+- Comentarios y respuestas entre usuarios.
+- Carrito y proceso de compra.
+
+**Requisitos no funcionales:**
+- Interfaz intuitiva y responsive.
+- Alta disponibilidad.
+- Seguridad en la autenticación y compra.
+
+
+
+### Arquitectura del sistema
+
+La arquitectura sigue el modelo cliente-servidor. Además se ha empleado la arquitectura modelo - vista - controlador.
+
+
+## Tecnologías utilizadas
+
+| Tecnología | Uso |
+|------------|-----|
+| Laravel / Eloquent | Backend |
+| Blade / AlpineJS / Tailwind | Front |
+| Apache | Servidor web |
+| MySQL | Almacenamiento de datos |
+| Auth / CSRF | Seguridad y autenticación |
+| Git/GitHub | Control de versiones |
+| Figma | Diseño |
+| AWS | Despliegue |
+
+---
