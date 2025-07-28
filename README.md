@@ -6,7 +6,7 @@
 ![Logo](./public/img/LogoInicial.jpg)
 
 
-## Autor
+## Autor y datos
 - **Nombre:** Alfonso Jesús Anillo Romero
 - **Grado:** Desarrollo de Aplicaciones Web
 - **Centro:** IES Rafael Alberti
