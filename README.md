@@ -13,7 +13,7 @@
 - **Curso académico:** 2024/2025
 
 
-- **Enlace a la web:** [Libreros](http://16.171.143.74:81/)
+- **Enlace a la web:** [Libreros](http://libreros.duckdns.org:81/)
 
 ---
 
